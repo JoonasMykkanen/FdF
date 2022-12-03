@@ -10,15 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf.a
+NAME = FdF
 
-SRC = main.c
+SRC = main.c fdf_map.c
 
 SRC_O = $(SRC:.c=.o)
-
-LIBFT = libft/libft.a
-
-MINILIBX = minilibx_macos/libmlx.a
 
 INCLUDES = fdf.h
 
@@ -35,10 +31,9 @@ $(NAME):
 	mv libft/libft.a libft.a
 	cd minilibx_macos && $(MAKE)
 	mv minilibx_macos/libmlx.a libmlx.a
-	cc $(FLAGS) $(SRC) $(LIBS) $(FRAME)
+	cc -o $(NAME) $(FLAGS) $(SRC) $(LIBS) $(FRAME)
 	
 clean:
-	rm -f $(SRC_O)
 	cd libft && $(MAKE) clean
 	cd minilibx_macos && $(MAKE) clean
 
@@ -56,5 +51,5 @@ test:
 	mv libft/libft.a libft.a
 	cd minilibx_macos && $(MAKE)
 	mv minilibx_macos/libmlx.a libmlx.a
-	cc $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
+	cc -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
 	./a.out "test_maps/42.fdf"
