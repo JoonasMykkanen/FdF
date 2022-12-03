@@ -1,27 +1,7 @@
 
 #include "fdf.h"
 
-int	line_count(char **argv)
-{
-	int		fd;
-	int		count;
-	char	*line;
-
-	count = 1;
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	free(line);
-	while(line)
-	{
-		line = get_next_line(fd);
-		free(line);
-		count++;
-	}
-	close(fd);
-	return (count);
-}
-
-char	**build_map(char **arr, char **argv)
+char	**build_arr(char **arr, char **argv)
 {
 	int		i;
 	int		fd;

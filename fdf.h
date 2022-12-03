@@ -4,20 +4,20 @@
 #include "libft/libft.h"
 #include "minilibx_macos/mlx.h"
 
-typedef	struct	s_point
+typedef	struct	s_pixel
 {
 	int	x;
 	int y;
 	int z;
-}				point;
+	int	count;
+	int	color;
+	int x_max;
+	int y_max;
+}				pixel;
 
-typedef struct	s_color
-{
-	int	r;
-	int	g;
-	int b;
-}				color;
-
+int		count_rows(char **arr);
+char	**build_map(char **arr);
 int		line_count(char **argv);
 int		convert_rgb(int r, int g, int b);
-char	**build_map(char **arr, char **argv);
+char	**build_arr(char **arr, char **argv);
+void	graphic_engine(void *ptr, void *win, char **arr);
