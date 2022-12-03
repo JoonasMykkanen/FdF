@@ -19,4 +19,5 @@ typedef struct	s_color
 }				color;
 
 int		line_count(char **argv);
+int		convert_rgb(int r, int g, int b);
 char	**build_map(char **arr, char **argv);

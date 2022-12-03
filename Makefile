@@ -12,17 +12,17 @@
 
 NAME = FdF
 
-SRC = main.c fdf_map.c
+SRC = main.c fdf_map.c fdf_utils.c
 
 SRC_O = $(SRC:.c=.o)
 
-INCLUDES = fdf.h
+INCLUDES = -I fdf.h
 
 LIBS = -L. -lft -lmlx
 
 FRAME = -framework OpenGL -framework Appkit
 
-FLAGS = -Wall -Werror -Wextra -I $(INCLUDES)
+FLAGS = -Wall -Werror -Wextra $(INCLUDES)
 
 all: $(NAME)
 
@@ -46,10 +46,10 @@ fclean:
 re: fclean all
 
 test:
-	$(MAKE) fclean
 	cd libft && $(MAKE)
 	mv libft/libft.a libft.a
 	cd minilibx_macos && $(MAKE)
 	mv minilibx_macos/libmlx.a libmlx.a
 	cc -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
-	./a.out "test_maps/42.fdf"
+	./FdF "test_maps/42.fdf"
+	@$(MAKE) fclean

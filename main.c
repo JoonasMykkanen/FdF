@@ -4,8 +4,8 @@
 
 int	main(int argc, char **argv)
 {
-	// void	*ptr;
-	// void	*win;
+	void	*ptr;
+	void	*win;
 	char	**arr;
 
 	if (argc < 2)
@@ -14,8 +14,11 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	arr = build_map(arr, argv);
-	// ptr = mlx_init();
-	// win = mlx_new_window(ptr, 1920, 1080, "FdF - jmykkane");
-	// mlx_loop(ptr);
+	ptr = mlx_init();
+	win = mlx_new_window(ptr, 1000, 1000, "FdF - jmykkane");
+	int i = 0;
+	while (++i < 1000)
+		mlx_pixel_put(ptr, win, i, 200, 0xFFFFFF);
+	mlx_loop(ptr);
 	return (0);
 }
