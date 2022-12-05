@@ -12,7 +12,7 @@
 
 NAME = FdF
 
-SRC = main.c fdf_arr.c fdf_utils.c fdf_draw.c
+SRC = main.c fdf_arr.c fdf_map.c fdf_utils.c fdf_draw.c fdf_draw_utils.c
 
 SRC_O = $(SRC:.c=.o)
 
@@ -52,4 +52,4 @@ test:
 	mv minilibx_macos/libmlx.a libmlx.a
 	cc -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
 	./FdF "test_maps/42.fdf"
-	@$(MAKE) fclean
+	$(MAKE) fclean

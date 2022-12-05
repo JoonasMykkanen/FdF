@@ -15,6 +15,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	arr = build_arr(arr, argv);
+	// map = generate_map(arr);
 	ptr = mlx_init();
 	win = mlx_new_window(ptr, 1000, 1000, "FdF - jmykkane");
 	graphic_engine(ptr, win, arr);

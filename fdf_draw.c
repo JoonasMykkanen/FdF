@@ -1,69 +1,49 @@
 
 #include "fdf.h"
 
-static int	choose_color(pixel p, char **arr)
+static int	calc_pos(pixel p, char c)
 {
-	int z;
-	int color;
+	int	pos;
 
-	z = arr[p.y][p.x];
-	if (z < 0)
-	{
-		color = convert_rgb(50, 50, 255);
-	}
-	else if (z > 0 && z < 10)
-	{
-		color = convert_rgb(230, 230, 230);
-	}
+	if (c == 'x')
+		pos =  p.count * p.offset;
 	else
-	{
-		color = convert_rgb(255, 50, 50);
-	}
-	return (color);
+		pos = p.y * p.offset;
+	return (pos);
 }
 
-static int	calc_z(char **arr, pixel p)
+static void	draw(void *ptr, void *win, pixel p)
 {
-	int 	z;
-	int 	len;
-	char	**values;
+	int	x_axis;
+	int	y_axis;
 
-	values = ft_split(arr[p.y], ' ');
-	len = line_count(values);
-	z = ft_atoi(values[p.count]);
-	ft_printf("z is: %d\n", z);
-	return (z);
+	x_axis = calc_pos(p, 'x');
+	y_axis = calc_pos(p, 'y');
+	ft_printf("Printing X to %d,%d\n", x_axis, y_axis);
+	mlx_string_put(ptr, win, x_axis, y_axis, p.color, "X");
 }
 
 void	graphic_engine(void *ptr, void *win, char **arr)
 {
 	pixel	p;
-	int		z;
-	int		color;
 	
-	p.x_max = ft_strlen(arr[0]);
-	p.y_max = count_rows(arr);
-	p.count = 0;
-	p.x = -1;
-	p.y = -1;
+	init_p(&p, arr);
 	while (++p.y < p.y_max)
 	{
-		while (++p.x < p.x_max)
+		while (p.count < p.x_max)
 		{
-			color = choose_color(p, arr);
-			p.color = color;
-			if (arr[p.y][p.x] != ' ')
+			if (arr[p.y][++p.x] != ' ')
 			{
-				z = calc_z(arr, p);
-				p.z = z;
-				mlx_pixel_put(ptr, win, p.x, p.y, p.color);
-				p.count++;
-				while (arr[p.y][p.x] != ' ' && p.x < p.x_max)
+				choose_color(&p, arr);
+				calc_z(arr, &p);
+				draw(ptr, win, p);
+				while (arr[p.y][p.x] != ' ' && p.x != '\0')
 					p.x++;
+				p.x += p.offset - 1;
+				p.count++;
 			}
 		}
-		p.x = -1;
-		p.count = 0;
+		mod_p(&p, 0);
 	}
 	mlx_loop(ptr);
 }
