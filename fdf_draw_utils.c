@@ -26,22 +26,20 @@ void	choose_color(pixel *p, char **arr)
 void	calc_z(char **arr, pixel *p)
 {
 	int 	z;
-	int 	len;
 	char	**values;
 
 	values = ft_split(arr[p->y], ' ');
-	len = count_rows(values);
-	ft_printf("len: %d\n", len);
 	z = ft_atoi(values[p->count]);
 	p->z = z;
-	p->offset = 1000 / len;
-	ft_printf("offset: %d\n", p->offset);
+
 }
 
 void	init_p(pixel *p, char **arr)
 {
-	p->x_max = sizeof(ft_split(arr[0], ' '));
+	p->x_max = count_columns(ft_split(arr[0], ' '));
 	p->y_max = count_rows(arr);
+	p->y_offset = 700 / p->y_max;
+	p->x_offset = 700 / p->x_max;
 	p->count = 0;
 	p->x = -1;
 	p->y = -1;

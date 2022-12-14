@@ -11,6 +11,16 @@ int	count_rows(char **arr)
 	return (count - 1);
 }
 
+int count_columns(char **arr)
+{
+	int	count;
+
+	count = -1;
+	while (arr[++count] != NULL)
+		;
+	return (count);
+}
+
 int convert_rgb(int r, int g, int b)
 {
 	int	hex;
