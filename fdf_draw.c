@@ -14,17 +14,10 @@ static int	calc_pos(pixel p, char c)
 
 static void	lines(void *ptr, void *win, pixel p)
 {
-	int i;
-	int x;
-	int y;
-
-	i = -1;
-	x = p.x;
-	y = p.y;
-
+	
 }
 
-static void	draw(void *ptr, void *win, pixel p)
+static void	draw(void *ptr, void *win, pixel p, char **arr)
 {
 	int i;
 	int	x_axis;
@@ -33,19 +26,7 @@ static void	draw(void *ptr, void *win, pixel p)
 	i = -1;
 	x_axis = calc_pos(p, 'x') + 150;
 	y_axis = calc_pos(p, 'y') + 150;
-	while (++i < p.x_offset)
-	{
-		if (p.count < p.x_max - 1)
-			mlx_pixel_put(ptr, win, x_axis++, y_axis, p.color);
-	}
-	if (p.count != p.x_max - 1)
-		x_axis -= p.x_offset;
-	i = -1;
-	while (++i < p.y_offset)
-	{
-		if (p.y < p.y_max - 1)
-			mlx_pixel_put(ptr, win, x_axis, y_axis++, p.color);	
-	}
+	mlx_string_put(ptr, win, x_axis, y_axis, p.color, "X");
 }
 
 void	graphic_engine(void *ptr, void *win, char **arr)
@@ -59,9 +40,9 @@ void	graphic_engine(void *ptr, void *win, char **arr)
 		{
 			if (arr[p.y][++p.x] != ' ')
 			{
-				choose_color(&p, arr);
 				calc_z(arr, &p);
-				draw(ptr, win, p);
+				choose_color(&p, arr);
+				draw(ptr, win, p, arr);
 				while (arr[p.y][p.x] != ' ' && p.x != '\0')
 					p.x++;
 				p.x += p.x_offset - 1;

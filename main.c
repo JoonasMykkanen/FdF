@@ -9,13 +9,12 @@ int	main(int argc, char **argv)
 	char	**arr;
 	char	**map;
 
-	if (argc < 2)
+	if (argc < 2 || argc > 2)
 	{
 		ft_printf("No map specified... Always assume user is an idiot!\n");
 		return (0);
 	}
 	arr = build_arr(arr, argv);
-	// map = generate_map(arr);
 	ptr = mlx_init();
 	win = mlx_new_window(ptr, 1000, 1000, "FdF - jmykkane");
 	graphic_engine(ptr, win, arr);

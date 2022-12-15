@@ -38,13 +38,14 @@ int	line_count(char **argv)
 	count = 1;
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
-	free(line);
 	while(line)
 	{
-		line = get_next_line(fd);
 		free(line);
+		line = get_next_line(fd);
 		count++;
 	}
+	free(line);
+	ft_printf("second: %s\n", line);
 	close(fd);
 	return (count);
 }
