@@ -19,7 +19,6 @@ char	**build_arr(char **arr, char **argv)
 		len = ft_strlen(line);
 		arr[i] = malloc(sizeof(char) * len + 1);
 		ft_memcpy(arr[i], line, len);
-		ft_printf("second: %s\n", line);
 		free(line);
 		i++;
 	}
