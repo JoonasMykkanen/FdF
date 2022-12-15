@@ -19,7 +19,6 @@ typedef	struct	s_pixel
 
 int		count_rows(char **arr);
 int		line_count(char **argv);
-char	**build_map(char **arr);
 void	mod_p(pixel *p, int mode);
 int		count_columns(char **arr);
 void	calc_z(char **arr, pixel *p);

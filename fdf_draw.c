@@ -1,14 +1,18 @@
 
 #include "fdf.h"
 
-static int	calc_pos(pixel p, char c)
+static int	isometric_pos(pixel p, char c)
 {
 	int	pos;
 
 	if (c == 'x')
-		pos =  p.count * p.x_offset;
+	{
+		pos = (p.count * p.x_offset) - (p.y * p.y_offset);
+	}
 	else
-		pos = p.y * p.y_offset;
+	{
+		pos = ((p.count * p.x_offset) +  (p.y * p.y_offset)) / 2;
+	}
 	return (pos);
 }
 
@@ -24,8 +28,8 @@ static void	draw(void *ptr, void *win, pixel p, char **arr)
 	int	y_axis;
 
 	i = -1;
-	x_axis = calc_pos(p, 'x') + 150;
-	y_axis = calc_pos(p, 'y') + 150;
+	x_axis = isometric_pos(p, 'x') + 150;
+	y_axis = isometric_pos(p, 'y') + 150;
 	mlx_string_put(ptr, win, x_axis, y_axis, p.color, "X");
 }
 

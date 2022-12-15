@@ -12,7 +12,7 @@
 
 NAME = FdF
 
-SRC = main.c fdf_utils.c fdf_draw.c fdf_draw_utils.c
+SRC = main.c fdf_arr.c fdf_utils.c fdf_draw.c fdf_draw_utils.c
 
 SRC_O = $(SRC:.c=.o)
 
