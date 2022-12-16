@@ -12,7 +12,8 @@
 
 NAME = FdF
 
-SRC = main.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_draw_line.c
+SRC = main.c fdf_arr.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_bresenhams_line.c\
+fdf_isometric.c
 
 SRC_O = $(SRC:.c=.o)
 
@@ -52,4 +53,14 @@ test:
 	mv minilibx_macos/libmlx.a libmlx.a
 	cc -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
 	./FdF "test_maps/42.fdf"
+	$(MAKE) fclean
+
+line:
+	cd libft && $(MAKE)
+	mv libft/libft.a libft.a
+	cd minilibx_macos && $(MAKE)
+	mv minilibx_macos/libmlx.a libmlx.a
+	cc -o line $(INCLUDES) test.c $(LIBS) $(FRAME)
+	./line
+	rm line
 	$(MAKE) fclean

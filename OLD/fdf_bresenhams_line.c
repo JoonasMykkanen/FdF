@@ -1,11 +1,17 @@
 
 #include "fdf.h"
 
-void	draw_bresenhams_line(void *ptr, void *win, pixel p, char c)
+void	draw_bresenhams_line(void *ptr, void *win, pixel p, line_args l)
 {
-	line_args	l;
 
-	init_line_args(&l, &p, c);
+	// if (p.z == 0)
+	// 	mlx_string_put(ptr, win, l.x_1, l.y_1, 0xffffff, "X");
+	// else
+	// 	mlx_string_put(ptr, win, l.x_1, l.y_1 + p.z, 0xff0000, "X");
+
+	ft_printf("x1: %d, y1: %d\n", l.x_1, l.y_1);
+	ft_printf("x2: %d, y2: %d\n", l.x_2, l.y_2);
+
 	if (l.run == 0)
 	{
 		if (l.y_2 < l.y_1)

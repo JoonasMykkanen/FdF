@@ -21,6 +21,14 @@ int count_columns(char **arr)
 	return (count);
 }
 
+int convert_rgb(int r, int g, int b)
+{
+	int	hex;
+
+	hex = (r<<16) | (g<<8) | b;
+    return (hex);
+}
+
 int	line_count(char **argv)
 {
 	int		fd;

@@ -2,22 +2,42 @@
 
 #include "fdf.h"
 
+static void	**build_arr(fdf_data_set *s, char **argv)
+{
+	int		i;
+	int		fd;
+	int		len;
+	int		count;
+	char	*line;
+
+	i = 0;
+	count = line_count(argv);
+	s->d.arr = malloc(sizeof(char *) * (count + 1));
+	fd = open(argv[1], O_RDONLY);
+	while (i < count)
+	{
+		line = get_next_line(fd);
+		len = ft_strlen(line);
+		s->d.arr[i] = malloc(sizeof(char) * len + 1);
+		ft_memcpy(s->d.arr[i], line, len);
+		free(line);
+		i++;
+	}
+	close(fd);
+}
+
 int	main(int argc, char **argv)
 {
-	void	*ptr;
-	void	*win;
-	char	**arr;
-	char	**map;
+	fdf_data_set	s;	
 
 	if (argc < 2 || argc > 2)
 	{
 		ft_printf("No map specified... Always assume user is an idiot!\n");
 		return (0);
 	}
-	arr = NULL;
-	arr = build_arr(arr, argv);
-	ptr = mlx_init();
-	win = mlx_new_window(ptr, 1000, 1000, "FdF - jmykkane");
-	graphic_engine(ptr, win, arr);
+	build_arr(&s, argv);
+	s.d.ptr = mlx_init();
+	s.d.win = mlx_new_window(s.d.ptr, 1500, 900, "FdF - jmykkane");
+	graphic_engine(s);
 	return (0);
 }
