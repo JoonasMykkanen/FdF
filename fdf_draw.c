@@ -3,10 +3,8 @@
 
 static void	draw(void *ptr, void *win, pixel p, char **arr)
 {
-	// draw to right
-	if (p.count < p.x_max)
+	if (p.count < p.x_max - 1)
 		draw_bresenhams_line(ptr, win, p, 'r');
-	// draw to down
 	if (p.y < p.y_max)
 		draw_bresenhams_line(ptr, win, p, 'd');
 }

@@ -12,7 +12,8 @@
 
 NAME = FdF
 
-SRC = main.c fdf_arr.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_bresenhams_line.c
+SRC = main.c fdf_arr.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_bresenhams_line.c\
+fdf_isometric.c
 
 SRC_O = $(SRC:.c=.o)
 

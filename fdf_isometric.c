@@ -30,7 +30,7 @@ int	isometric_pos(pixel p, int n, char dir, char type)
 			}
 			else if (n == 2)
 			{
-				pos = (p.count * p.x_offset) - (p.y * p.y_offset) + x_start;
+				pos = (p.count * p.x_offset) - (p.y + 1 * p.y_offset) + x_start;
 			}
 		}
 	}
@@ -55,7 +55,7 @@ int	isometric_pos(pixel p, int n, char dir, char type)
 			}
 			else if (n == 2)
 			{
-				pos = ((p.count * p.x_offset) + (p.y * p.y_offset)) / 2 + y_start;
+				pos = ((p.count * p.x_offset) + (p.y + 1 * p.y_offset)) / 2 + y_start;
 			}
 		}
 	}
