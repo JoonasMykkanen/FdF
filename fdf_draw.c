@@ -1,36 +1,14 @@
 
 #include "fdf.h"
 
-static int	isometric_pos(pixel p, char c)
-{
-	int	pos;
-
-	if (c == 'x')
-	{
-		pos = (p.count * p.x_offset) - (p.y * p.y_offset);
-	}
-	else
-	{
-		pos = ((p.count * p.x_offset) +  (p.y * p.y_offset)) / 2;
-	}
-	return (pos);
-}
-
-static void	lines(void *ptr, void *win, pixel p)
-{
-	
-}
-
 static void	draw(void *ptr, void *win, pixel p, char **arr)
 {
-	int i;
-	int	x_axis;
-	int	y_axis;
-
-	i = -1;
-	x_axis = isometric_pos(p, 'x') + 150;
-	y_axis = isometric_pos(p, 'y') + 150;
-	mlx_string_put(ptr, win, x_axis, y_axis, p.color, "X");
+	// draw to right
+	if (p.count < p.x_max)
+		draw_bresenhams_line(ptr, win, p, 'r');
+	// draw to down
+	if (p.y < p.y_max)
+		draw_bresenhams_line(ptr, win, p, 'd');
 }
 
 void	graphic_engine(void *ptr, void *win, char **arr)
@@ -45,7 +23,6 @@ void	graphic_engine(void *ptr, void *win, char **arr)
 			if (arr[p.y][++p.x] != ' ')
 			{
 				calc_z(arr, &p);
-				choose_color(&p, arr);
 				draw(ptr, win, p, arr);
 				while (arr[p.y][p.x] != ' ' && p.x != '\0')
 					p.x++;

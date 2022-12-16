@@ -45,7 +45,6 @@ int	line_count(char **argv)
 		count++;
 	}
 	free(line);
-	ft_printf("second: %s\n", line);
 	close(fd);
 	return (count);
 }
