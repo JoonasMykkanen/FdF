@@ -19,7 +19,6 @@ void	draw_line(fdf_data_set s)
 		s.l.y = s.p_1.y - 1;
 		while (++s.l.y <= s.p_2.y)
 		{
-			// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
 			draw_pixel(&s, s.l.x, s.l.y);
 		}
 	}
@@ -45,7 +44,6 @@ void	draw_line(fdf_data_set s)
 			s.l.x = s.p_1.x;
 			while (s.l.x <= s.p_2.x)
 			{
-				// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
 				draw_pixel(&s, s.l.x, s.l.y);
 				s.l.offset += s.l.delta;
 				if (s.l.offset >= s.l.threshold)
@@ -69,7 +67,6 @@ void	draw_line(fdf_data_set s)
 			}
 			while (s.l.y <= s.p_2.y)
 			{
-				// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
 				draw_pixel(&s, s.l.x, s.l.y);
 				s.l.offset += s.l.delta;
 				if (s.l.offset >= s.l.threshold)
