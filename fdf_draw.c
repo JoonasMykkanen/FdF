@@ -31,14 +31,14 @@ static void	draw(fdf_data_set s)
 {
 	s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
 	s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
-	if (s.p.count < s.p.x_max)
+	if (s.p.count < s.p.x_max - 1)
 	{
 		get_next_points(&s, 'r');
 		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
 		s.p_2.y = ((((s.p.count + 1) * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
 		draw_line(s);
 	}
-	if (s.p.y < s.p.y_max)
+	if (s.p.y < s.p.y_max - 1)
 	{
 		get_next_points(&s, 'd');
 		s.p_2.x = (s.p.count * s.p.x_offset) - ((s.p.y + 1) * s.p.y_offset) + s.p.x_translate;
@@ -49,7 +49,7 @@ static void	draw(fdf_data_set s)
 
 void	graphic_engine(fdf_data_set s)
 {	
-	init_p(&s);
+	init_graphics(&s);
 	while (++s.p.y < s.p.y_max)
 	{
 		while (s.p.count < s.p.x_max)
@@ -65,5 +65,6 @@ void	graphic_engine(fdf_data_set s)
 		}
 		mod_p(&s.p, 0);
 	}
+	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img, 0, 0);
 	mlx_loop(s.d.ptr);
 }

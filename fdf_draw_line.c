@@ -9,7 +9,7 @@ static void	add_height(fdf_data_set *s)
 
 void	draw_line(fdf_data_set s)
 {
-add_height(&s);
+	add_height(&s);
 	s.l.rise = s.p_2.y - s.p_1.y;
 	s.l.run = s.p_2.x - s.p_1.x;
 	if (s.l.run == 0)
@@ -19,7 +19,8 @@ add_height(&s);
 		s.l.y = s.p_1.y - 1;
 		while (++s.l.y <= s.p_2.y)
 		{
-			mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+			// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+			draw_pixel(&s, s.l.x, s.l.y);
 		}
 	}
 	else
@@ -44,7 +45,8 @@ add_height(&s);
 			s.l.x = s.p_1.x;
 			while (s.l.x <= s.p_2.x)
 			{
-				mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+				// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+				draw_pixel(&s, s.l.x, s.l.y);
 				s.l.offset += s.l.delta;
 				if (s.l.offset >= s.l.threshold)
 				{
@@ -67,7 +69,8 @@ add_height(&s);
 			}
 			while (s.l.y <= s.p_2.y)
 			{
-				mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+				// mlx_pixel_put(s.d.ptr, s.d.win, s.l.x, s.l.y, 0xffffff);
+				draw_pixel(&s, s.l.x, s.l.y);
 				s.l.offset += s.l.delta;
 				if (s.l.offset >= s.l.threshold)
 				{

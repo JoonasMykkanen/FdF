@@ -20,7 +20,7 @@ void	flip(int *one, int *two)
 	*one = temp;
 }
 
-void	init_p(fdf_data_set *s)
+static void	init_p(fdf_data_set *s)
 {
 	s->p.x_max = count_columns(ft_split(s->d.arr[0], ' '));
 	s->p.y_max = count_rows(s->d.arr);
@@ -31,4 +31,14 @@ void	init_p(fdf_data_set *s)
 	s->p.count = 0;
 	s->p.x = -1;
 	s->p.y = -1;
+}
+
+void	init_graphics(fdf_data_set *s)
+{
+	init_p(s);
+	s->d.img_blk = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
+	s->d.img = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
+	blk_image(s, s->d.img_blk, s->i.blk, -1, -1);
+	blk_image(s, s->d.img, s->i.img, -1, -1);
+	mlx_put_image_to_window(s->d.ptr, s->d.win, s->d.img_blk, 0, 0);
 }
