@@ -15,11 +15,11 @@ static void	get_next_points(fdf_data_set *s, char dir)
 			s->p_1.z = ft_atoi(x_values[s->p.count]);
 			s->p_2.z = ft_atoi(x_values[s->p.count + 1]);
 		}
-		free(y_values);
-		y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
 		if (dir == 'd')
 		{
 			s->p_1.z =  ft_atoi(y_values[s->p.count]);
+			free(y_values);
+			y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
 			s->p_2.z = ft_atoi(y_values[s->p.count]);
 		}
 		free(x_values);
@@ -29,24 +29,20 @@ static void	get_next_points(fdf_data_set *s, char dir)
 
 static void	draw(fdf_data_set s)
 {
-	// Draw line right
+	s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
+	s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
 	if (s.p.count < s.p.x_max)
 	{
 		get_next_points(&s, 'r');
-		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
-		s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
-		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) +s.p.x_translate;
-		s.p_2.y = (((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2) + s.p.y_translate;
+		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
+		s.p_2.y = ((((s.p.count + 1) * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
 		draw_line(s);
 	}
-	// Draw line down
 	if (s.p.y < s.p.y_max)
 	{
 		get_next_points(&s, 'd');
-		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
-		s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
-		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
-		s.p_2.y = (((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2) + s.p.y_translate;
+		s.p_2.x = (s.p.count * s.p.x_offset) - ((s.p.y + 1) * s.p.y_offset) + s.p.x_translate;
+		s.p_2.y = (((s.p.count * s.p.x_offset) + ((s.p.y + 1) * s.p.y_offset)) / 2) + s.p.y_translate;
 		draw_line(s);
 	}
 }

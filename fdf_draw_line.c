@@ -1,8 +1,15 @@
 
 #include "fdf.h"
 
+static void	add_height(fdf_data_set *s)
+{
+	s->p_1.y -= s->p_1.z;
+	s->p_2.y -= s->p_2.z;
+}
+
 void	draw_line(fdf_data_set s)
 {
+add_height(&s);
 	s.l.rise = s.p_2.y - s.p_1.y;
 	s.l.run = s.p_2.x - s.p_1.x;
 	if (s.l.run == 0)
