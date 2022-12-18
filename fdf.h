@@ -58,6 +58,8 @@ typedef struct	s_data
 		int y_max;
 		int	x_offset;
 		int	y_offset;
+		int	x_translate;
+		int y_translate;
 	}				pixel;
 typedef struct	s_fdf
 {

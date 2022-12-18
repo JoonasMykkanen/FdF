@@ -29,32 +29,25 @@ static void	get_next_points(fdf_data_set *s, char dir)
 
 static void	draw(fdf_data_set s)
 {
-	int	x_offset;
-	int	y_offset;
-
-	x_offset = 750;
-	y_offset = 250;
 	// Draw line right
 	if (s.p.count < s.p.x_max)
 	{
 		get_next_points(&s, 'r');
-		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + x_offset;
-		s.p_1.y = ((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2 + y_offset;
-		s.p_2.x =  ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + x_offset;
-		s.p_2.y = ((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2 + y_offset;
-		mlx_string_put(s.d.ptr, s.d.win, s.p_1.x, s.p_1.y, 0xffffff, "x");
-		// draw_line(s);
+		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
+		s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
+		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) +s.p.x_translate;
+		s.p_2.y = (((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2) + s.p.y_translate;
+		draw_line(s);
 	}
 	// Draw line down
 	if (s.p.y < s.p.y_max)
 	{
 		get_next_points(&s, 'd');
-		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + x_offset;
-		s.p_1.y = ((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2 + y_offset;
-		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + x_offset;
-		s.p_2.y = ((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2 + y_offset;
-		mlx_string_put(s.d.ptr, s.d.win, s.p_1.x, s.p_1.y, 0xffffff, "x");
-		// draw_line(s);
+		s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
+		s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
+		s.p_2.x = ((s.p.count + 1) * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
+		s.p_2.y = (((s.p.count * s.p.x_offset) + (s.p.y + 1 * s.p.y_offset)) / 2) + s.p.y_translate;
+		draw_line(s);
 	}
 }
 
