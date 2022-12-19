@@ -70,13 +70,6 @@ typedef struct	s_image
 	int	*img;
 }				image;
 
-typedef struct	s_hook
-{
-	int	(*zoom)();
-	int	(*close_win)();
-	int	(*translate)();
-	int	(*hook_engine)();
-}				hook;
 typedef struct	s_fdf
 {
 	data		d;
@@ -85,8 +78,6 @@ typedef struct	s_fdf
 	line_args	l;
 	pixel		p;
 	image		i;
-	hook		h;
-
 }				fdf_data_set;
 
 int		count_rows(char **arr);
@@ -100,5 +91,6 @@ void	add_height(fdf_data_set *s);
 void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
+int 	handle_no_event(fdf_data_set *s)
 void	draw_pixel(fdf_data_set *s, int x, int y);
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);

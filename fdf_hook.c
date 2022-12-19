@@ -2,11 +2,6 @@
 
 #include "fdf.h"
 
-static int handle_no_event(fdf_data_set *s)
-{
-	return (0);
-}
-
 static int	mouse_hook(int keycode, fdf_data_set *s)
 {
 	if (keycode == 4)
