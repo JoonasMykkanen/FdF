@@ -6,13 +6,13 @@ static int	mouse_hook(int keycode, fdf_data_set *s)
 {
 	if (keycode == 4)
 	{
-		// s->d.mult += 0.1;
-		ft_printf("up!\n");
+		// s->d.z_offset = s->d.z_offset + 10;
+		ft_printf("inside mous hook\n");
 	}
-	if (keycode == 5)
+	else if (keycode == 5)
 	{
-		// s->d.mult -= 0.1;
-		ft_printf("down!\n");
+		// s->d.z_offset= s->d.z_offset - 10;
+		ft_printf("inside mous hook\n");
 	}
 	return (0);
 }
@@ -38,8 +38,12 @@ static int	key_hook(int keycode, fdf_data_set *s)
 
 void	hook_engine(fdf_data_set *s)
 {
-	mlx_loop_hook(s->d.ptr, &handle_no_event, &s);
-	mlx_key_hook(s->d.win, key_hook, &s);
-	mlx_mouse_hook(s->d.win, mouse_hook, &s);
+	ft_printf("z_offset: %d\n", s->d.z_offset);
+	s->d.z_offset -= 10;
+	ft_printf("z_offset: %d\n", s->d.z_offset);
+	ft_printf("Hook started\n");
+	mlx_loop_hook(s->d.ptr, &handle_no_event, s);
+	mlx_key_hook(s->d.win, key_hook, s);
+	mlx_mouse_hook(s->d.win, mouse_hook, s);
 	mlx_loop(s->d.ptr);
 }

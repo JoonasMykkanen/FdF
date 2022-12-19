@@ -5,8 +5,8 @@
 // Adding Z offset for Y coordinates
 void	add_height(fdf_data_set *s)
 {
-	s->p_1.y -= s->p_1.z * s->d.mult;
-	s->p_2.y -= s->p_2.z * s->d.mult;
+	s->p_1.y -= s->p_1.z + s->d.z_offset;
+	s->p_2.y -= s->p_2.z + s->d.z_offset;
 }
 
 // modify values during loop in graphic_engine()
@@ -38,8 +38,8 @@ static void	init_p(fdf_data_set *s)
 	s->p.y_translate = 250;
 	s->p.y_offset = 500 / s->p.y_max;
 	s->p.x_offset = 500 / s->p.x_max;
+	s->d.z_offset = 0;
 	s->p.count = 0;
-	s->d.mult = 1;
 	s->p.x = -1;
 	s->p.y = -1;
 }

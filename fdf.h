@@ -9,9 +9,9 @@ typedef struct	s_data
 	void	*ptr;
 	void	*win;
 	void	*img;
-	float	mult;
 	char	**arr;
 	char	**map;
+	int		z_offset;
 	void	*img_blk;
 	int		window_width;
 	int		window_height;
@@ -27,7 +27,7 @@ typedef struct	s_point_2
 {
 	int	x;
 	int	y;
-	int	z;
+	int z;
 }				point_2;
 
 typedef struct	s_line_args
@@ -91,6 +91,6 @@ void	add_height(fdf_data_set *s);
 void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
-int 	handle_no_event(fdf_data_set *s)
+int 	handle_no_event(fdf_data_set *s);
 void	draw_pixel(fdf_data_set *s, int x, int y);
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);
