@@ -39,6 +39,7 @@ static void	init_p(fdf_data_set *s)
 	s->p.y_offset = 500 / s->p.y_max;
 	s->p.x_offset = 500 / s->p.x_max;
 	s->d.z_offset = 0;
+	ft_printf("after init p: %d\n", s->d.z_offset);
 	s->p.count = 0;
 	s->p.x = -1;
 	s->p.y = -1;
@@ -49,6 +50,7 @@ static void	init_p(fdf_data_set *s)
 void	init_graphics(fdf_data_set *s)
 {
 	init_p(s);
+	ft_printf("after init graphics: %d\n", s->d.z_offset);
 	s->d.img_blk = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
 	s->d.img = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
 	blk_image(s, s->d.img_blk, s->i.blk, -1, -1);

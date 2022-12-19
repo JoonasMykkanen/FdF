@@ -31,7 +31,7 @@ static void	get_next_points(fdf_data_set *s, char dir)
 // Translate picture from 2D to 3D using in isometric view functions
 // get_next_points() gets Z value from points + 1 to right and down
 // draw_line goes from current position to next position using bresenham's algorithm
-static void	draw(fdf_data_set s)
+void	draw(fdf_data_set s)
 {
 	s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
 	s.p_1.y = (((s.p.count * s.p.x_offset) + (s.p.y * s.p.y_offset)) / 2) + s.p.y_translate;
@@ -71,4 +71,5 @@ void	graphic_engine(fdf_data_set s)
 		mod_p(&s.p, 0);
 	}
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img, 0, 0);
+	hook_engine(&s);
 }

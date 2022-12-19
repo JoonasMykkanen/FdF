@@ -43,6 +43,5 @@ int	main(int argc, char **argv)
 	s.d.ptr = mlx_init();
 	s.d.win = mlx_new_window(s.d.ptr, s.d.window_width, s.d.window_height, "FdF - jmykkane");
 	graphic_engine(s);
-	hook_engine(&s);
 	return (0);
 }

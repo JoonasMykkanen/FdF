@@ -1,6 +1,31 @@
 
 #include "fdf.h"
 
+void	update_image(fdf_data_set s)
+{
+	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img_blk, 0, 0);
+	blk_image(&s, s.d.img, s.i.img, -1, -1);
+	s.p.count = 0;
+	s.p.y = -1;
+	s.p.x = -1;
+	while (++s.p.y < s.p.y_max)
+	{
+		while (s.p.count < s.p.x_max)
+		{
+			if (s.d.arr[s.p.y][++s.p.x] != ' ')
+			{
+				draw(s);
+				while (s.d.arr[s.p.y][s.p.x] != ' ' && s.p.x != '\0')
+					s.p.x++;
+				s.p.x += s.p.x_offset - 1;
+				s.p.count++;
+			}
+		}
+		mod_p(&s.p, 0);
+	}
+	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img, 0, 0);
+}
+
 // Will create ALL BLACK image
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y)
 {
