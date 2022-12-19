@@ -2,6 +2,21 @@
 
 #include "fdf.h"
 
+void	zoom(fdf_data_set *s, char dir)
+{
+	if (dir == '+')
+	{
+		s->p.x_offset += 10;
+		s->p.y_offset += 10;
+	}
+	else if (dir == '-')
+	{
+		s->p.x_offset -= 10;
+		s->p.y_offset -= 10;
+	}
+	update_image(*s);
+}
+
 void	translate(fdf_data_set *s, char dir)
 {
 	if (dir == 'u')

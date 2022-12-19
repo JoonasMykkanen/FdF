@@ -51,6 +51,7 @@ typedef	struct	s_pixel
 	int z;
 	int	z_x;
 	int z_y;
+	int	zoom;
 	int	count;
 	int	color;
 	int x_max;
@@ -94,6 +95,7 @@ void	update_image(fdf_data_set s);
 void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
+void	zoom(fdf_data_set *s, char dir);
 int 	handle_no_event(fdf_data_set *s);
 void	translate(fdf_data_set *s, char dir);
 void	draw_pixel(fdf_data_set *s, int x, int y);

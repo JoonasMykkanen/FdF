@@ -22,15 +22,15 @@ static int	key_hook(int keycode, fdf_data_set *s)
 	else if (keycode == 126)
 		translate(s, 'u');
 	else if (keycode == 125)
-		ft_printf("down arrow pressed\n");
+		translate(s, 'd');
 	else if (keycode == 124)
-		ft_printf("right arrow pressed\n");
+		translate(s, 'r');
 	else if (keycode == 123)
-		ft_printf("left arrow pressed\n");
+		translate(s, 'l');
 	else if (keycode == 24)
-		ft_printf("plus pressed\n");
+		zoom(s, '+');
 	else if (keycode == 27)
-			ft_printf("minus pressed\n");
+		zoom(s, '-');
 	return (0);
 }
 
