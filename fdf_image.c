@@ -1,6 +1,7 @@
 
 #include "fdf.h"
 
+// Will create ALL BLACK image
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y)
 {
 	int endian;
@@ -17,10 +18,10 @@ void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y)
 			data[(y * line_pixels) + x] = 0x000000;
 		}
 		x = -1;
-		ft_printf("%d\n",data[(y * line_pixels) + x]);
 	}
 }
 
+// Will draw pixel to actual window coordinates based on x, y input
 void	draw_pixel(fdf_data_set *s, int x, int y)
 {
 	int endian;

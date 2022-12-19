@@ -1,6 +1,7 @@
 
 #include "fdf.h"
 
+// Access arr to get x+1 and y+1 Z values
 static void	get_next_points(fdf_data_set *s, char dir)
 {
 	char	**x_values;
@@ -27,6 +28,9 @@ static void	get_next_points(fdf_data_set *s, char dir)
 	}
 }
 
+// Translate picture from 2D to 3D using in isometric view functions
+// get_next_points() gets Z value from points + 1 to right and down
+// draw_line goes from current position to next position using bresenham's algorithm
 static void	draw(fdf_data_set s)
 {
 	s.p_1.x = (s.p.count * s.p.x_offset) - (s.p.y * s.p.y_offset) + s.p.x_translate;
@@ -47,6 +51,7 @@ static void	draw(fdf_data_set s)
 	}
 }
 
+// Goes through arr and translates map size to actual pixels.
 void	graphic_engine(fdf_data_set s)
 {	
 	init_graphics(&s);
@@ -66,5 +71,4 @@ void	graphic_engine(fdf_data_set s)
 		mod_p(&s.p, 0);
 	}
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img, 0, 0);
-	mlx_loop(s.d.ptr);
 }

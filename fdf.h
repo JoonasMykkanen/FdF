@@ -9,6 +9,7 @@ typedef struct	s_data
 	void	*ptr;
 	void	*win;
 	void	*img;
+	float	mult;
 	char	**arr;
 	char	**map;
 	void	*img_blk;
@@ -68,6 +69,14 @@ typedef struct	s_image
 	int	*blk;
 	int	*img;
 }				image;
+
+typedef struct	s_hook
+{
+	int	(*zoom)();
+	int	(*close_win)();
+	int	(*translate)();
+	int	(*hook_engine)();
+}				hook;
 typedef struct	s_fdf
 {
 	data		d;
@@ -76,6 +85,7 @@ typedef struct	s_fdf
 	line_args	l;
 	pixel		p;
 	image		i;
+	hook		h;
 
 }				fdf_data_set;
 
@@ -83,8 +93,11 @@ int		count_rows(char **arr);
 int		line_count(char **argv);
 void	flip(int *one, int *two);
 void	mod_p(pixel *p, int mode);
+void	ft_close(fdf_data_set *s);
 void	draw_line(fdf_data_set s);
 int 	count_columns(char **arr);
+void	add_height(fdf_data_set *s);
+void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
 void	draw_pixel(fdf_data_set *s, int x, int y);

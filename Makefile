@@ -12,7 +12,8 @@
 
 NAME = FdF
 
-SRC = main.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_draw_line.c fdf_image.c
+SRC = main.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_draw_line.c fdf_image.c\
+fdf_hook.c fdf_hook_utils.c
 
 SRC_O = $(SRC:.c=.o)
 

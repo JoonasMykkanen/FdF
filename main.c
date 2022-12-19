@@ -2,6 +2,7 @@
 
 #include "fdf.h"
 
+// Builds main dataset from our input file
 static void	build_arr(fdf_data_set *s, char **argv)
 {
 	int		i;
@@ -26,6 +27,7 @@ static void	build_arr(fdf_data_set *s, char **argv)
 	close(fd);
 }
 
+// This is main loop, obviously... Why did you ask?
 int	main(int argc, char **argv)
 {
 	fdf_data_set	s;
@@ -41,5 +43,6 @@ int	main(int argc, char **argv)
 	s.d.ptr = mlx_init();
 	s.d.win = mlx_new_window(s.d.ptr, s.d.window_width, s.d.window_height, "FdF - jmykkane");
 	graphic_engine(s);
+	hook_engine(&s);
 	return (0);
 }
