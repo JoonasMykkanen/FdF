@@ -51,6 +51,6 @@ test:
 	mv libft/libft.a libft.a
 	cd minilibx_macos && $(MAKE)
 	mv minilibx_macos/libmlx.a libmlx.a
-	cc -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
+	cc -g -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
 	./FdF "test_maps/42.fdf"
 	$(MAKE) fclean

@@ -40,7 +40,6 @@ static void	init_p(fdf_data_set *s)
 	s->p.x_offset = 500 / s->p.x_max;
 	s->d.z_offset = 0;
 	s->p.count = 0;
-	s->p.zoom = 0;
 	s->p.x = -1;
 	s->p.y = -1;
 }

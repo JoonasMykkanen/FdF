@@ -51,7 +51,6 @@ typedef	struct	s_pixel
 	int z;
 	int	z_x;
 	int z_y;
-	int	zoom;
 	int	count;
 	int	color;
 	int x_max;
