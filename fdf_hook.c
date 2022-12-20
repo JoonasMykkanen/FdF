@@ -2,21 +2,9 @@
 
 #include "fdf.h"
 
-static int	mouse_hook(int keycode, fdf_data_set *s)
-{
-	if (keycode == 4)
-	{
-		ft_printf("inside mous hook\n");
-	}
-	else if (keycode == 5)
-	{
-		ft_printf("inside mous hook\n");
-	}
-	return (0);
-}
-
 static int	key_hook(int keycode, fdf_data_set *s)
 {
+	ft_printf("key: %d\n", keycode);
 	if (keycode == 53)
 		ft_close(s);
 	else if (keycode == 126)
@@ -31,6 +19,10 @@ static int	key_hook(int keycode, fdf_data_set *s)
 		zoom(s, '+');
 	else if (keycode == 27)
 		zoom(s, '-');
+	else if (keycode == 34)
+		adjust_z(s, 'i');
+	else if (keycode == 2)
+		adjust_z(s, 'd');
 	return (0);
 }
 
@@ -38,8 +30,6 @@ void	hook_engine(fdf_data_set *s)
 {
 	ft_printf("at hook engine: %d\n", s->d.z_offset);
 	mlx_loop_hook(s->d.ptr, &handle_no_event, s);
-	// mlx_mouse_hook(s->d.win, &mouse_hook, s);
-	// mlx_hook(s->d.win, 4, 0, &mouse_hook, s);
 	mlx_key_hook(s->d.win, &key_hook, s);
 	mlx_loop(s->d.ptr);
 }

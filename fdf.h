@@ -80,7 +80,6 @@ typedef struct	s_fdf
 	image		i;
 }				fdf_data_set;
 
-
 void	draw(fdf_data_set s);
 int		count_rows(char **arr);
 int		line_count(char **argv);
@@ -96,6 +95,7 @@ void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
 void	zoom(fdf_data_set *s, char dir);
 int 	handle_no_event(fdf_data_set *s);
+void	adjust_z(fdf_data_set *s, char dir);
 void	translate(fdf_data_set *s, char dir);
 void	draw_pixel(fdf_data_set *s, int x, int y);
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);

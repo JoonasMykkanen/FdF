@@ -2,6 +2,22 @@
 
 #include "fdf.h"
 
+static void	welcome_message(void)
+{
+	ft_printf("Welcome to FdF\n");
+	ft_printf("\n");
+	ft_printf("Controls are as follows:\n");
+	ft_printf("quit: esc\n");
+	ft_printf("move right: right arrow\n");
+	ft_printf("move left: left arrow\n");
+	ft_printf("move up: up arrow\n");
+	ft_printf("move down: down arrow\n");
+	ft_printf("zoom in: +\n");
+	ft_printf("zoom out: -\n");
+	ft_printf("increase z: z\n");
+	ft_printf("decrease z: x\n");
+}
+
 // Builds main dataset from our input file
 static void	build_arr(fdf_data_set *s, char **argv)
 {
@@ -32,16 +48,20 @@ int	main(int argc, char **argv)
 {
 	fdf_data_set	s;
 
-	s.d.window_width = 1500;
-	s.d.window_height = 900;
 	if (argc < 2 || argc > 2)
 	{
 		ft_printf("No map specified... Always assume user is an idiot!\n");
 		return (0);
 	}
+	s.d.window_width = 1500;
+	s.d.window_height = 900;
+	welcome_message();
 	build_arr(&s, argv);
-	s.d.ptr = mlx_init();
-	s.d.win = mlx_new_window(s.d.ptr, s.d.window_width, s.d.window_height, "FdF - jmykkane");
-	graphic_engine(s);
+	if (s.d.arr)
+	{
+		s.d.ptr = mlx_init();
+		s.d.win = mlx_new_window(s.d.ptr, s.d.window_width, s.d.window_height, "FdF - jmykkane");
+		graphic_engine(s);
+	}
 	return (0);
 }

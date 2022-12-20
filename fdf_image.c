@@ -33,7 +33,6 @@ void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y)
 	int pixel_bits;
 	int line_pixels;
 
-	data = (int *)malloc(sizeof(int *));
 	data = (int *)mlx_get_data_addr(image, &pixel_bits, &line_pixels, &endian);
 	line_pixels /= 4;
 	while (++y < s->d.window_height)
