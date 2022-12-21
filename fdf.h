@@ -10,7 +10,7 @@ typedef struct	s_data
 	void	*win;
 	void	*img;
 	char	**arr;
-	char	**map;
+	int		z_max;
 	int		z_offset;
 	void	*img_blk;
 	int		window_width;
@@ -63,11 +63,11 @@ typedef	struct	s_pixel
 
 typedef struct	s_image
 {
+	int	*blk;
+	int	*img;
 	int endian;
 	int pixel_bits;
 	int line_pixels;
-	int	*blk;
-	int	*img;
 }				image;
 
 typedef struct	s_fdf
@@ -85,6 +85,7 @@ int		count_rows(char **arr);
 int		line_count(char **argv);
 void	flip(int *one, int *two);
 void	mod_p(pixel *p, int mode);
+void	find_top(fdf_data_set *s);
 void	ft_close(fdf_data_set *s);
 void	draw_line(fdf_data_set s);
 int 	count_columns(char **arr);
@@ -94,8 +95,10 @@ void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
 void	zoom(fdf_data_set *s, char dir);
+int 	convert_rgb(int r, int g, int b);
 int 	handle_no_event(fdf_data_set *s);
 void	adjust_z(fdf_data_set *s, char dir);
 void	translate(fdf_data_set *s, char dir);
+void	get_pixel_color(fdf_data_set *s, int y);
 void	draw_pixel(fdf_data_set *s, int x, int y);
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);

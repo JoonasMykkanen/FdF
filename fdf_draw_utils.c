@@ -2,6 +2,25 @@
 
 #include "fdf.h"
 
+// Converts R G B values to one hex int value
+int convert_rgb(int r, int g, int b)
+{
+	int	hex;
+
+	hex = (r<<16) | (g<<8) | b;
+    return (hex);
+}
+
+void	get_pixel_color(fdf_data_set *s, int y)
+{
+	int	range;
+
+	range = y - s->p_1.y;
+	ft_printf("x: %d y: %d\n", s->p_1.x, s->p_1.y);
+	ft_printf("range: %d\n", range);
+	s->p.color = 0xffffff;
+}
+
 // Adding Z offset for Y coordinates
 void	add_height(fdf_data_set *s)
 {
@@ -55,7 +74,7 @@ static void	init_p(fdf_data_set *s)
 void	init_graphics(fdf_data_set *s)
 {
 	init_p(s);
-	ft_printf("after init graphics: %d\n", s->d.z_offset);
+	find_top(s);
 	s->d.img_blk = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
 	s->d.img = mlx_new_image(s->d.ptr, s->d.window_width, s->d.window_height);
 	blk_image(s, s->d.img_blk, s->i.blk, -1, -1);

@@ -54,8 +54,9 @@ void	draw_pixel(fdf_data_set *s, int x, int y)
 
 	if ((x < s->d.window_width && y < s->d.window_height) && (x > 0 && y > 0))
 	{
+		get_pixel_color(s, y);
 		s->i.img = (int *)mlx_get_data_addr(s->d.img, &pixel_bits, &line_pixels, &endian);
 		line_pixels /= 4;
-		s->i.img[(y * line_pixels) + x] = 0xffffff;
+		s->i.img[(y * line_pixels) + x] = s->p.color;
 	}
 }

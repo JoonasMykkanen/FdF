@@ -1,6 +1,32 @@
 
 #include "fdf.h"
 
+void	find_top(fdf_data_set *s)
+{
+	int 	i;
+	int		l;
+	int 	max;
+	int 	temp;
+	char	**row;
+
+	i = -1;
+	l = -1;
+	max = 0;
+	while (s->d.arr[++i] != NULL)
+	{
+		row = ft_split(s->d.arr[i], ' ');
+		while (row[++l] != NULL)
+		{
+			temp = ft_atoi(&row[l]);
+			if (temp > max)
+				max = temp;
+		}
+		free(row);
+		l = -1;
+	}
+	s->d.z_max = max;
+}
+
 int	count_rows(char **arr)
 {
 	int count;
