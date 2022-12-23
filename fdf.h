@@ -11,8 +11,9 @@ typedef struct	s_data
 	void	*img;
 	char	**arr;
 	int		z_max;
-	int		z_offset;
 	void	*img_blk;
+	int		z_offset;
+	int		z_offset_og;
 	int		window_width;
 	int		window_height;
 }				data;

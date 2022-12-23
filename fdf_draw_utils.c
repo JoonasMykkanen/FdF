@@ -11,35 +11,6 @@ int convert_rgb(int r, int g, int b)
     return (hex);
 }
 
-void	get_pixel_color(fdf_data_set *s)
-{
-	int alpha;
-
-	if (s->p_1.z != 0 && s->p_2.z != 0)
-		s->p.color = convert_rgb(255, 0, 0);
-	else if (s->p_1.z != 0 || s->p_2.z != 0)
-	{
-		if (s->p_1.z < s->p_2.z)
-		{
-			alpha = (s->p.z * 255 / (s->p_2.y - s->p_1.y));
-			s->p.color = convert_rgb(255, (255 - alpha), (255 - alpha));
-		}
-		else
-		{
-			alpha = (s->p.z * 255 / (s->p_2.y - s->p_1.y));
-			if (alpha < 0)
-			{
-				alpha = alpha * -1;
-				s->p.color = convert_rgb(255, (255 - alpha), (255 - alpha));
-			}
-			else
-            	s->p.color = convert_rgb(255, alpha, alpha);
-		}
-	}
-	else
-		s->p.color = 0xffffff;
-}
-
 // Adding Z offset for Y coordinates
 void	add_height(fdf_data_set *s)
 {
@@ -79,10 +50,11 @@ static void	init_p(fdf_data_set *s)
 {
 	s->p.x_max = count_columns(ft_split(s->d.arr[0], ' '));
 	s->p.y_max = count_rows(s->d.arr);
-	s->p.x_translate = 750;
-	s->p.y_translate = 250;
 	s->p.y_offset = 500 / s->p.y_max;
 	s->p.x_offset = 500 / s->p.x_max;
+	s->d.z_offset_og = s->d.z_offset;
+	s->p.x_translate = 750;
+	s->p.y_translate = 250;
 	s->d.z_offset = 0;
 	s->p.count = 0;
 	s->p.x = -1;
