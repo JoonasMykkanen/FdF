@@ -11,19 +11,28 @@ int convert_rgb(int r, int g, int b)
     return (hex);
 }
 
-void	get_pixel_color(fdf_data_set *s, int y)
+void	get_pixel_color(fdf_data_set *s)
 {
-	int	range;
+	int alpha;
 
-	range = y - s->p_1.y;
-	ft_printf("x: %d y: %d\n", s->p_1.x, s->p_1.y);
-	ft_printf("range: %d\n", range);
-	s->p.color = 0xffffff;
+	if (s->p_1.z != 0 || s->p_2.z != 0)
+	{
+		if ((s->p_2.x - s->p_1.x) < (s->p_2.y - s->p_1.y))
+			alpha = s->p.z * 255 / (s->p_2.y - s->p_1.y);
+		else
+			alpha = s->p.z * 255 / (s->p_2.x - s->p_1.x);
+		s->p.color = convert_rgb(alpha, 50, 0);
+	}
+	else
+	{
+		s->p.color = 0xffffff;
+	}
 }
 
 // Adding Z offset for Y coordinates
 void	add_height(fdf_data_set *s)
 {
+	s->p.z = 0;
 	if (s->p_1.z != 0)
 	{
 		s->p_1.y -= s->p_1.z - s->d.z_offset;

@@ -65,9 +65,6 @@ typedef struct	s_image
 {
 	int	*blk;
 	int	*img;
-	int endian;
-	int pixel_bits;
-	int line_pixels;
 }				image;
 
 typedef struct	s_fdf
@@ -95,10 +92,10 @@ void	hook_engine(fdf_data_set *s);
 void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
 void	zoom(fdf_data_set *s, char dir);
+void	get_pixel_color(fdf_data_set *s);
 int 	convert_rgb(int r, int g, int b);
 int 	handle_no_event(fdf_data_set *s);
 void	adjust_z(fdf_data_set *s, char dir);
 void	translate(fdf_data_set *s, char dir);
-void	get_pixel_color(fdf_data_set *s, int y);
 void	draw_pixel(fdf_data_set *s, int x, int y);
 void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);

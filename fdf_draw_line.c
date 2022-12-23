@@ -14,6 +14,7 @@ void	draw_line(fdf_data_set s)
 		s.l.y = s.p_1.y - 1;
 		while (++s.l.y <= s.p_2.y)
 		{
+			s.p.z++;
 			draw_pixel(&s, s.l.x, s.l.y);
 		}
 	}
@@ -43,6 +44,7 @@ void	draw_line(fdf_data_set s)
 				s.l.offset += s.l.delta;
 				if (s.l.offset >= s.l.threshold)
 				{
+					s.p.z += s.l.adjust;
 					s.l.y += s.l.adjust;
 					s.l.threshold += s.l.threshold_inc;
 				}
@@ -70,6 +72,7 @@ void	draw_line(fdf_data_set s)
 					s.l.x += s.l.adjust;
 					s.l.threshold += s.l.threshold_inc;
 				}
+				s.p.z++;
 				s.l.y++;
 			}
 		}

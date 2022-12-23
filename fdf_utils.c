@@ -17,7 +17,7 @@ void	find_top(fdf_data_set *s)
 		row = ft_split(s->d.arr[i], ' ');
 		while (row[++l] != NULL)
 		{
-			temp = ft_atoi(&row[l]);
+			temp = ft_atoi(row[l]);
 			if (temp > max)
 				max = temp;
 		}

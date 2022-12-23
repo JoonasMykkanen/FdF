@@ -4,7 +4,6 @@
 
 static int	key_hook(int keycode, fdf_data_set *s)
 {
-	ft_printf("key: %d\n", keycode);
 	if (keycode == 53)
 		ft_close(s);
 	else if (keycode == 126)
@@ -28,7 +27,6 @@ static int	key_hook(int keycode, fdf_data_set *s)
 
 void	hook_engine(fdf_data_set *s)
 {
-	ft_printf("at hook engine: %d\n", s->d.z_offset);
 	mlx_loop_hook(s->d.ptr, &handle_no_event, s);
 	mlx_key_hook(s->d.win, &key_hook, s);
 	mlx_loop(s->d.ptr);
