@@ -14,24 +14,27 @@ int convert_rgb(int r, int g, int b)
 void	get_pixel_color(fdf_data_set *s)
 {
 	int alpha;
-	int	r_mult;
-	int g_mult;
-	int	b_mult;
 
-	r_mult = 1;
-	g_mult = 1;
-	b_mult = 1;
-	if (s->p_1.z != 0 || s->p_2.z != 0)
+	if (s->p_1.z != 0 && s->p_2.z != 0)
+		s->p.color = convert_rgb(255, 0, 0);
+	else if (s->p_1.z != 0 || s->p_2.z != 0)
 	{
-		if ((s->p_2.x - s->p_1.x) < (s->p_2.y - s->p_1.y))
+		if (s->p_1.z < s->p_2.z)
 		{
 			alpha = (s->p.z * 255 / (s->p_2.y - s->p_1.y));
+			s->p.color = convert_rgb(255, (255 - alpha), (255 - alpha));
 		}
 		else
 		{
-			alpha = (s->p.z * 255 / (s->p_2.x - s->p_1.x));
+			alpha = (s->p.z * 255 / (s->p_2.y - s->p_1.y));
+			if (alpha < 0)
+			{
+				alpha = alpha * -1;
+				s->p.color = convert_rgb(255, (255 - alpha), (255 - alpha));
+			}
+			else
+            	s->p.color = convert_rgb(255, alpha, alpha);
 		}
-		s->p.color = convert_rgb(255, alpha, alpha);
 	}
 	else
 		s->p.color = 0xffffff;
