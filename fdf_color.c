@@ -4,7 +4,7 @@
 
 static void	red_gradient(fdf_data_set *s)
 {
-	int alpha;
+	int	alpha;
 
 	if (s->p_1.z != 0 && s->p_2.z != 0)
 		s->p.color = convert_rgb(255, 0, 0);
@@ -24,7 +24,7 @@ static void	red_gradient(fdf_data_set *s)
 				s->p.color = convert_rgb(255, (255 - alpha), (255 - alpha));
 			}
 			else
-            	s->p.color = convert_rgb(255, alpha, alpha);
+				s->p.color = convert_rgb(255, alpha, alpha);
 		}
 	}
 	else
@@ -33,7 +33,7 @@ static void	red_gradient(fdf_data_set *s)
 
 static void	blue_gradient(fdf_data_set *s)
 {
-	int alpha;
+	int	alpha;
 
 	if (s->p_1.z != 0 && s->p_2.z != 0)
 		s->p.color = convert_rgb(0, 0, 255);
@@ -53,7 +53,7 @@ static void	blue_gradient(fdf_data_set *s)
 				s->p.color = convert_rgb((255 - alpha), (255 - alpha), 255);
 			}
 			else
-            	s->p.color = convert_rgb(alpha, alpha, 255);
+				s->p.color = convert_rgb(alpha, alpha, 255);
 		}
 	}
 	else

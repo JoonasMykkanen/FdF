@@ -28,6 +28,7 @@ static int	key_hook(int keycode, fdf_data_set *s)
 void	hook_engine(fdf_data_set *s)
 {
 	mlx_loop_hook(s->d.ptr, &handle_no_event, s);
+	mlx_hook(s->d.win, 17, 0, &ft_close, s);
 	mlx_key_hook(s->d.win, &key_hook, s);
 	mlx_loop(s->d.ptr);
 }
