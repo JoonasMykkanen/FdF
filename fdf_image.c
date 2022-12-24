@@ -3,7 +3,6 @@
 
 void	update_image(fdf_data_set s)
 {
-	ft_printf("z: %d z_og: %d\n", s.d.z_offset, s.d.z_offset_og);
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img_blk, 0, 0);
 	blk_image(&s, s.d.img, s.i.img, -1, -1);
 	s.p.count = 0;
