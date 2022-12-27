@@ -51,12 +51,12 @@ void	translate(fdf_data_set *s, char dir)
 	update_image(*s);
 }
 
-void	ft_close(fdf_data_set *s)
+int	ft_close(void)
 {
 	exit(0);
 }
 
-int	handle_no_event(fdf_data_set *s)
+int	handle_no_event(void)
 {
 	return (0);
 }

@@ -4,7 +4,7 @@
 void	update_image(fdf_data_set s)
 {
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img_blk, 0, 0);
-	blk_image(&s, s.d.img, s.i.img, -1, -1);
+	blk_image(&s, s.d.img, s.i.img);
 	s.p.c = 0;
 	s.p.y = -1;
 	s.p.x = -1;
