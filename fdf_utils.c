@@ -3,10 +3,10 @@
 
 void	find_top(fdf_data_set *s)
 {
-	int 	i;
+	int		i;
 	int		l;
-	int 	max;
-	int 	temp;
+	int		max;
+	int		temp;
 	char	**row;
 
 	i = -1;
@@ -37,7 +37,7 @@ int	count_rows(char **arr)
 	return (count - 1);
 }
 
-int count_columns(char **arr)
+int	count_columns(char **arr)
 {
 	int	count;
 
@@ -56,7 +56,7 @@ int	line_count(char **argv)
 	count = 1;
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
-	while(line)
+	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);

@@ -2,6 +2,15 @@
 
 #include "fdf.h"
 
+// Converts R G B values to one hex int value
+static int	convert_rgb(int r, int g, int b)
+{
+	int	hex;
+
+	hex = (r << 16) | (g << 8) | b;
+	return (hex);
+}
+
 static void	red_gradient(fdf_data_set *s)
 {
 	int	alpha;

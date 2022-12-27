@@ -53,14 +53,14 @@ int	main(int argc, char **argv)
 		ft_printf("No map specified... Always assume user is an idiot!\n");
 		return (0);
 	}
-	s.d.window_width = 1500;
-	s.d.window_height = 900;
+	s.d.win_width = 1500;
+	s.d.win_height = 900;
 	welcome_message();
 	build_arr(&s, argv);
 	if (s.d.arr)
 	{
 		s.d.ptr = mlx_init();
-		s.d.win = mlx_new_window(s.d.ptr, s.d.window_width, s.d.window_height, "FdF - jmykkane");
+		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "42");
 		graphic_engine(s);
 	}
 	return (0);

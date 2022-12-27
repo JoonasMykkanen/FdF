@@ -14,8 +14,8 @@ typedef struct	s_data
 	void	*img_blk;
 	int		z_offset;
 	int		z_offset_og;
-	int		window_width;
-	int		window_height;
+	int		win_width;
+	int		win_height;
 }				data;
 typedef struct	s_point_1
 {
@@ -50,16 +50,16 @@ typedef	struct	s_pixel
 	int	x;
 	int y;
 	int z;
+	int	c;
 	int	z_x;
 	int z_y;
-	int	count;
 	int	color;
 	int x_max;
 	int y_max;
-	int	x_offset;
-	int	y_offset;
-	int	x_translate;
-	int y_translate;
+	int	x_of;
+	int	y_of;
+	int	x_t;
+	int y_t;
 }				pixel;
 
 typedef struct	s_image
@@ -94,9 +94,8 @@ void	init_graphics(fdf_data_set *s);
 void	graphic_engine(fdf_data_set s);
 void	zoom(fdf_data_set *s, char dir);
 void	get_pixel_color(fdf_data_set *s);
-int 	convert_rgb(int r, int g, int b);
 int 	handle_no_event(fdf_data_set *s);
 void	adjust_z(fdf_data_set *s, char dir);
 void	translate(fdf_data_set *s, char dir);
 void	draw_pixel(fdf_data_set *s, int x, int y);
-void	blk_image(fdf_data_set *s, void *image, int *data, int x, int y);
+void	blk_image(fdf_data_set *s, void *image, int *data);
