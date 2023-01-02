@@ -43,7 +43,7 @@ void	find_top(t_fdf_data_set *s)
 
 int	count_rows(char **arr)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (arr[count] != NULL)

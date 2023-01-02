@@ -71,7 +71,7 @@ static void	init_p(t_fdf_data_set *s)
 void	init_graphics(t_fdf_data_set *s)
 {
 	init_p(s);
-	find_top(s);	
+	find_top(s);
 	s->d.img_blk = mlx_new_image(s->d.ptr, s->d.win_width, s->d.win_height);
 	s->d.img = mlx_new_image(s->d.ptr, s->d.win_width, s->d.win_height);
 	blk_image(s, s->d.img_blk, s->i.blk);

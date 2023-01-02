@@ -41,7 +41,7 @@ void	update_image(t_fdf_data_set s)
 void	blk_image(t_fdf_data_set *s, void *image, int *data)
 {
 	int	x;
-	int y;
+	int	y;
 	int	end;
 	int	p_bits;
 	int	line_p;
