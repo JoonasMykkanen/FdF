@@ -74,5 +74,6 @@ int	main(int argc, char **argv)
 		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "42");
 		graphic_engine(s);
 	}
+	ft_cleanup(s);
 	return (0);
 }

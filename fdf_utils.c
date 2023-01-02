@@ -35,8 +35,7 @@ void	find_top(t_fdf_data_set *s)
 					max = temp;
 			}
 		}
-		if (row[0] != NULL)
-			free(row);
+		ft_free(row);
 		l = -1;
 	}
 	s->d.z_max = max;

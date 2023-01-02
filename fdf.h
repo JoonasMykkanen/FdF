@@ -92,15 +92,17 @@ typedef struct s_fdf
 }				t_fdf_data_set;
 
 int		ft_close(void);
-void	draw(t_fdf_data_set s);
 int		handle_no_event(void);
 int		count_rows(char **arr);
+void	draw(t_fdf_data_set s);
 int		line_count(char **argv);
+void	ft_free(char **garbage);
 void	flip(int *one, int *two);
 int		count_columns(char **arr);
 void	find_top(t_fdf_data_set *s);
 void	draw_line(t_fdf_data_set s);
 void	mod_p(t_pixel *p, int mode);
+void	ft_cleanup(t_fdf_data_set s);
 void	add_height(t_fdf_data_set *s);
 void	update_image(t_fdf_data_set s);
 void	hook_engine(t_fdf_data_set *s);

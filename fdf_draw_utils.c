@@ -49,7 +49,11 @@ void	flip(int *one, int *two)
 // Starting values for pixel p. "p" is used in main loop in graphic_engine()
 static void	init_p(t_fdf_data_set *s)
 {
-	s->p.x_max = count_columns(ft_split(s->d.arr[0], ' '));
+	char	**count;
+
+	count = ft_split(s->d.arr[0], ' ');
+	s->p.x_max = count_columns(count);
+	ft_free(count);
 	s->p.y_max = count_rows(s->d.arr);
 	s->p.y_of = 500 / s->p.y_max;
 	s->p.x_of = 500 / s->p.x_max;
@@ -67,7 +71,7 @@ static void	init_p(t_fdf_data_set *s)
 void	init_graphics(t_fdf_data_set *s)
 {
 	init_p(s);
-	find_top(s);
+	find_top(s);	
 	s->d.img_blk = mlx_new_image(s->d.ptr, s->d.win_width, s->d.win_height);
 	s->d.img = mlx_new_image(s->d.ptr, s->d.win_width, s->d.win_height);
 	blk_image(s, s->d.img_blk, s->i.blk);
