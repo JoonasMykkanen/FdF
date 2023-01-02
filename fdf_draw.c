@@ -45,6 +45,7 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 // bresenham's algorithm
 void	draw(t_fdf_data_set s)
 {
+	ft_printf("Printing %d,%d \n", s.p.c, s.p.y);
 	s.p_1.x = (s.p.c * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
 	if (s.p.c <= s.p.x_max)
@@ -71,8 +72,10 @@ void	graphic_engine(t_fdf_data_set s)
 	init_graphics(&s);
 	while (++s.p.y <= s.p.y_max)
 	{
+		ft_printf("y: %d max: %d\n", s.p.y, s.p.y_max);
 		while (s.p.c <= s.p.x_max)
 		{
+			ft_printf("x: %d max: %d\n", s.p.c, s.p.x_max);
 			if (s.d.arr[s.p.y][++s.p.x] != ' ')
 			{
 				draw(s);
