@@ -53,10 +53,10 @@ static void	init_p(t_fdf_data_set *s)
 	s->p.y_max = count_rows(s->d.arr);
 	s->p.y_of = 500 / s->p.y_max;
 	s->p.x_of = 500 / s->p.x_max;
+	s->d.z_offset = 0;
 	s->d.z_offset_og = s->d.z_offset;
 	s->p.x_t = 750;
 	s->p.y_t = 250;
-	s->d.z_offset = 0;
 	s->p.c = 0;
 	s->p.x = -1;
 	s->p.y = -1;

@@ -69,6 +69,7 @@ void	draw(t_fdf_data_set s)
 void	graphic_engine(t_fdf_data_set s)
 {	
 	init_graphics(&s);
+	ft_printf("top: %d\n", s.d.z_max);
 	while (++s.p.y < s.p.y_max)
 	{
 		while (s.p.c < s.p.x_max)
