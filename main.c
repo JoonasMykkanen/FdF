@@ -50,6 +50,7 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 		free(line);
 		i++;
 	}
+	s->d.arr[i] = NULL;
 	close(fd);
 }
 

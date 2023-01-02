@@ -43,6 +43,7 @@ fclean:
 	rm -f libft.a
 	cd libft && $(MAKE) clean
 	cd minilibx_macos && $(MAKE) clean
+	rm -f FdF
 
 re: fclean all
 

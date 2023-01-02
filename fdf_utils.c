@@ -28,11 +28,15 @@ void	find_top(t_fdf_data_set *s)
 		row = ft_split(s->d.arr[i], ' ');
 		while (row[++l] != NULL)
 		{
-			temp = ft_atoi(row[l]);
-			if (temp > max)
-				max = temp;
+			if (row[l] != NULL)
+			{
+				temp = ft_atoi(row[l]);
+				if (temp > max)
+					max = temp;
+			}
 		}
-		free(row);
+		if (row[0] != NULL)
+			free(row);
 		l = -1;
 	}
 	s->d.z_max = max;
