@@ -2,7 +2,7 @@
 
 #include "fdf.h"
 
-static int	key_hook(int keycode, fdf_data_set *s)
+static int	key_hook(int keycode, t_fdf_data_set *s)
 {
 	if (keycode == 53)
 		ft_close();
@@ -25,7 +25,7 @@ static int	key_hook(int keycode, fdf_data_set *s)
 	return (0);
 }
 
-void	hook_engine(fdf_data_set *s)
+void	hook_engine(t_fdf_data_set *s)
 {
 	mlx_loop_hook(s->d.ptr, &handle_no_event, s);
 	mlx_hook(s->d.win, 17, 0, ft_close, s);

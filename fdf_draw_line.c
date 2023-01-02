@@ -2,7 +2,7 @@
 
 #include "fdf.h"
 
-static void	vertical_line(fdf_data_set s)
+static void	vertical_line(t_fdf_data_set s)
 {
 	s.l.x = s.p_1.x;
 	if (s.p_2.y < s.p_1.y)
@@ -15,7 +15,7 @@ static void	vertical_line(fdf_data_set s)
 	}
 }
 
-static void	rise_over_run(fdf_data_set s)
+static void	rise_over_run(t_fdf_data_set s)
 {
 	s.l.delta = abs(s.l.rise) * 2;
 	s.l.threshold = abs(s.l.run);
@@ -41,9 +41,9 @@ static void	rise_over_run(fdf_data_set s)
 	}
 }
 
-static void	run_over_rise(fdf_data_set s)
+static void	run_over_rise(t_fdf_data_set s)
 {
-	s.l.delta = abs(s.l.run)  * 2;
+	s.l.delta = abs(s.l.run) * 2;
 	s.l.threshold = abs(s.l.rise);
 	s.l.threshold_inc = abs(s.l.rise) * 2;
 	s.l.x = s.p_1.x;
@@ -67,7 +67,7 @@ static void	run_over_rise(fdf_data_set s)
 	}
 }
 
-void	draw_line(fdf_data_set s)
+void	draw_line(t_fdf_data_set s)
 {
 	add_height(&s);
 	s.l.rise = s.p_2.y - s.p_1.y;

@@ -1,7 +1,7 @@
 
 #include "fdf.h"
 
-void	update_image(fdf_data_set s)
+void	update_image(t_fdf_data_set s)
 {
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img_blk, 0, 0);
 	blk_image(&s, s.d.img, s.i.img);
@@ -27,7 +27,7 @@ void	update_image(fdf_data_set s)
 }
 
 // Will create ALL BLACK image
-void	blk_image(fdf_data_set *s, void *image, int *data)
+void	blk_image(t_fdf_data_set *s, void *image, int *data)
 {
 	int	x;
 	int y;
@@ -50,7 +50,7 @@ void	blk_image(fdf_data_set *s, void *image, int *data)
 }
 
 // Will draw pixel to actual window coordinates based on x, y input
-void	draw_pixel(fdf_data_set *s, int x, int y)
+void	draw_pixel(t_fdf_data_set *s, int x, int y)
 {
 	int	end;
 	int	p_bits;

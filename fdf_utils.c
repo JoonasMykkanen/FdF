@@ -1,7 +1,7 @@
 
 #include "fdf.h"
 
-void	find_top(fdf_data_set *s)
+void	find_top(t_fdf_data_set *s)
 {
 	int		i;
 	int		l;

@@ -11,7 +11,7 @@ static int	convert_rgb(int r, int g, int b)
 	return (hex);
 }
 
-static void	red_gradient(fdf_data_set *s)
+static void	red_gradient(t_fdf_data_set *s)
 {
 	int	alpha;
 
@@ -40,7 +40,7 @@ static void	red_gradient(fdf_data_set *s)
 		s->p.color = 0xffffff;
 }
 
-static void	blue_gradient(fdf_data_set *s)
+static void	blue_gradient(t_fdf_data_set *s)
 {
 	int	alpha;
 
@@ -69,7 +69,7 @@ static void	blue_gradient(fdf_data_set *s)
 		s->p.color = 0xffffff;
 }
 
-void	get_pixel_color(fdf_data_set *s)
+void	get_pixel_color(t_fdf_data_set *s)
 {
 	if (s->d.z_offset_og - s->d.z_offset + s->d.z_max == 0)
 	{

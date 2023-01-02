@@ -19,7 +19,7 @@ static void	welcome_message(void)
 }
 
 // Builds main dataset from our input file
-static void	build_arr(fdf_data_set *s, char **argv)
+static void	build_arr(t_fdf_data_set *s, char **argv)
 {
 	int		i;
 	int		fd;
@@ -46,7 +46,7 @@ static void	build_arr(fdf_data_set *s, char **argv)
 // This is main loop, obviously... Why did you ask?
 int	main(int argc, char **argv)
 {
-	fdf_data_set	s;
+	t_fdf_data_set	s;
 
 	if (argc < 2 || argc > 2)
 	{

@@ -2,7 +2,7 @@
 
 #include "fdf.h"
 
-void	adjust_z(fdf_data_set *s, char dir)
+void	adjust_z(t_fdf_data_set *s, char dir)
 {
 	if (dir == 'i')
 	{
@@ -15,7 +15,7 @@ void	adjust_z(fdf_data_set *s, char dir)
 	update_image(*s);
 }
 
-void	zoom(fdf_data_set *s, char dir)
+void	zoom(t_fdf_data_set *s, char dir)
 {
 	if (dir == '+')
 	{
@@ -30,23 +30,23 @@ void	zoom(fdf_data_set *s, char dir)
 	update_image(*s);
 }
 
-void	translate(fdf_data_set *s, char dir)
+void	translate(t_fdf_data_set *s, char dir)
 {
 	if (dir == 'u')
 	{
-		s->p.y_t -= 10;
+		s->p.y_t -= s->d.win_height / 10;
 	}
 	else if (dir == 'd')
 	{
-		s->p.y_t += 10;
+		s->p.y_t += s->d.win_height / 10;
 	}
 	else if (dir == 'r')
 	{
-		s->p.x_t += 10;
+		s->p.x_t += s->d.win_width / 10;
 	}
 	else if (dir == 'l')
 	{
-		s->p.x_t -= 10;
+		s->p.x_t -= s->d.win_width / 10;
 	}
 	update_image(*s);
 }

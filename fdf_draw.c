@@ -2,7 +2,7 @@
 #include "fdf.h"
 
 // Access arr to get x+1 and y+1 z values
-static void	get_next_points(fdf_data_set *s, char dir)
+static void	get_next_points(t_fdf_data_set *s, char dir)
 {
 	char	**x_values;
 	char	**y_values;
@@ -32,7 +32,7 @@ static void	get_next_points(fdf_data_set *s, char dir)
 // get_next_points() gets Z value from points + 1 to right and down
 // draw_line goes from current position to next position using 
 // bresenham's algorithm
-void	draw(fdf_data_set s)
+void	draw(t_fdf_data_set s)
 {
 	s.p_1.x = (s.p.c * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
@@ -55,7 +55,7 @@ void	draw(fdf_data_set s)
 }
 
 // Goes through arr and translates map size to actual pixels.
-void	graphic_engine(fdf_data_set s)
+void	graphic_engine(t_fdf_data_set s)
 {	
 	init_graphics(&s);
 	while (++s.p.y < s.p.y_max)
