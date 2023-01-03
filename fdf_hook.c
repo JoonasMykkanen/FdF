@@ -12,6 +12,11 @@
 
 #include "fdf.h"
 
+static int	handle_no_event(void)
+{
+	return (0);
+}
+
 static int	key_hook(int keycode, t_fdf_data_set *s)
 {
 	if (keycode == 53)
@@ -28,10 +33,14 @@ static int	key_hook(int keycode, t_fdf_data_set *s)
 		zoom(s, '+');
 	else if (keycode == 27)
 		zoom(s, '-');
-	else if (keycode == 34)
+	else if (keycode == 19)
 		adjust_z(s, 'i');
-	else if (keycode == 2)
+	else if (keycode == 18)
 		adjust_z(s, 'd');
+	else if (keycode == 13)
+		rotate(s, 'w');
+	else if (keycode == 1)
+		rotate(s, 's');
 	return (0);
 }
 

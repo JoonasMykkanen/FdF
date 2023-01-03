@@ -46,14 +46,16 @@ typedef struct s_point_2
 
 typedef struct s_line_args
 {
+	float	m;
 	int		x;
 	int		y;
-	float	m;
 	int		run;
 	int		rise;
 	int		delta;
 	int		offset;
 	int		adjust;
+	float	sin_mult;
+	float	cos_mult;
 	float	threshold;
 	int		threshold_inc;
 }				t_line_args;
@@ -92,7 +94,6 @@ typedef struct s_fdf
 }				t_fdf_data_set;
 
 int		ft_close(void);
-int		handle_no_event(void);
 int		count_rows(char **arr);
 void	draw(t_fdf_data_set s);
 int		line_count(char **argv);
@@ -110,6 +111,7 @@ void	init_graphics(t_fdf_data_set *s);
 void	graphic_engine(t_fdf_data_set s);
 void	zoom(t_fdf_data_set *s, char dir);
 void	get_pixel_color(t_fdf_data_set *s);
+void 	rotate(t_fdf_data_set *s, char dir);
 void	adjust_z(t_fdf_data_set *s, char dir);
 void	translate(t_fdf_data_set *s, char dir);
 void	draw_pixel(t_fdf_data_set *s, int x, int y);

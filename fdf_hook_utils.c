@@ -16,11 +16,11 @@ void	adjust_z(t_fdf_data_set *s, char dir)
 {
 	if (dir == 'i')
 	{
-		s->d.z_offset -= 10;
+		s->d.z_offset -= s->d.win_width / 100;
 	}
 	else if (dir == 'd')
 	{
-		s->d.z_offset += 10;
+		s->d.z_offset += s->d.win_width / 100;
 	}
 	update_image(*s);
 }
@@ -29,13 +29,13 @@ void	zoom(t_fdf_data_set *s, char dir)
 {
 	if (dir == '+')
 	{
-		s->p.x_of += 10;
-		s->p.y_of += 10;
+		s->p.x_of += s->d.win_width / 100;
+		s->p.y_of += s->d.win_width / 100;
 	}
 	else if (dir == '-')
 	{
-		s->p.x_of -= 10;
-		s->p.y_of -= 10;
+		s->p.x_of -= s->d.win_width / 100;
+		s->p.y_of -= s->d.win_width / 100;
 	}
 	update_image(*s);
 }
@@ -44,11 +44,11 @@ void	translate(t_fdf_data_set *s, char dir)
 {
 	if (dir == 'u')
 	{
-		s->p.y_t -= s->d.win_height / 10;
+		s->p.y_t -= s->d.win_width / 10;
 	}
 	else if (dir == 'd')
 	{
-		s->p.y_t += s->d.win_height / 10;
+		s->p.y_t += s->d.win_width / 10;
 	}
 	else if (dir == 'r')
 	{
@@ -56,7 +56,22 @@ void	translate(t_fdf_data_set *s, char dir)
 	}
 	else if (dir == 'l')
 	{
-		s->p.x_t -= s->d.win_width / 10;
+		s->p.x_t -=s->d.win_width / 10;
+	}
+	update_image(*s);
+}
+
+void rotate(t_fdf_data_set *s, char dir)
+{
+	if (dir == 'w')
+	{
+		s->l.sin_mult -= 0.1;
+		s->p.y_t += s->d.win_height / 3;
+	}
+	else if (dir == 's')
+	{
+		s->l.sin_mult += 0.1;
+		s->p.y_t -= s->d.win_height / 3;
 	}
 	update_image(*s);
 }
@@ -64,9 +79,4 @@ void	translate(t_fdf_data_set *s, char dir)
 int	ft_close(void)
 {
 	exit(0);
-}
-
-int	handle_no_event(void)
-{
-	return (0);
 }
