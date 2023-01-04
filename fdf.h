@@ -94,6 +94,7 @@ typedef struct s_fdf
 }				t_fdf_data_set;
 
 int		ft_close(void);
+int		handle_no_event(void);
 int		count_rows(char **arr);
 void	draw(t_fdf_data_set s);
 int		line_count(char **argv);

@@ -61,22 +61,12 @@ void	translate(t_fdf_data_set *s, char dir)
 	update_image(*s);
 }
 
-void	rotate(t_fdf_data_set *s, char dir)
-{
-	if (dir == 'w')
-	{
-		s->l.sin_mult -= 0.1;
-		s->p.y_t += s->d.win_height / 3;
-	}
-	else if (dir == 's')
-	{
-		s->l.sin_mult += 0.1;
-		s->p.y_t -= s->d.win_height / 3;
-	}
-	update_image(*s);
-}
-
 int	ft_close(void)
 {
 	exit(0);
+}
+
+int	handle_no_event(void)
+{
+	return (0);
 }
