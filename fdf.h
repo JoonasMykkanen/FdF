@@ -94,6 +94,7 @@ typedef struct s_fdf
 }				t_fdf_data_set;
 
 int		ft_close(void);
+int		handle_no_event(void);
 int		count_rows(char **arr);
 void	draw(t_fdf_data_set s);
 int		line_count(char **argv);
@@ -111,7 +112,6 @@ void	init_graphics(t_fdf_data_set *s);
 void	graphic_engine(t_fdf_data_set s);
 void	zoom(t_fdf_data_set *s, char dir);
 void	get_pixel_color(t_fdf_data_set *s);
-void 	rotate(t_fdf_data_set *s, char dir);
 void	adjust_z(t_fdf_data_set *s, char dir);
 void	translate(t_fdf_data_set *s, char dir);
 void	draw_pixel(t_fdf_data_set *s, int x, int y);
