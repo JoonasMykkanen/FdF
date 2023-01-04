@@ -56,12 +56,12 @@ void	translate(t_fdf_data_set *s, char dir)
 	}
 	else if (dir == 'l')
 	{
-		s->p.x_t -=s->d.win_width / 10;
+		s->p.x_t -= s->d.win_width / 10;
 	}
 	update_image(*s);
 }
 
-void rotate(t_fdf_data_set *s, char dir)
+void	rotate(t_fdf_data_set *s, char dir)
 {
 	if (dir == 'w')
 	{
