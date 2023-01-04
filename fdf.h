@@ -54,8 +54,6 @@ typedef struct s_line_args
 	int		delta;
 	int		offset;
 	int		adjust;
-	float	sin_mult;
-	float	cos_mult;
 	float	threshold;
 	int		threshold_inc;
 }				t_line_args;
