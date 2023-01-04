@@ -58,11 +58,9 @@ static void	init_p(t_fdf_data_set *s)
 	s->p.y_of = s->d.win_height / s->p.y_max;
 	s->p.x_of = s->d.win_width / s->p.x_max;
 	s->d.z_offset = 0;
-	s->l.sin_mult = 0.5;
-	s->l.cos_mult = 1;
 	s->d.z_offset_og = s->d.z_offset;
-	s->p.x_t = 1050;
-	s->p.y_t = 500;
+	s->p.x_t = 750;
+	s->p.y_t = 250;
 	s->p.c = 0;
 	s->p.x = -1;
 	s->p.y = -1;
