@@ -24,8 +24,8 @@ static void	welcome_message(void)
 	ft_printf("move down: down arrow\n");
 	ft_printf("zoom in: +\n");
 	ft_printf("zoom out: -\n");
-	ft_printf("increase z: z\n");
-	ft_printf("decrease z: x\n");
+	ft_printf("increase z: 2\n");
+	ft_printf("decrease z: 1\n");
 }
 
 // Builds main dataset from our input file

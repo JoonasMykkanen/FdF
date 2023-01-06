@@ -16,7 +16,9 @@ static void	vertical_line(t_fdf_data_set s)
 {
 	s.l.x = s.p_1.x;
 	if (s.p_2.y < s.p_1.y)
+	{
 		flip(&s.p_2.y, &s.p_1.y);
+	}
 	s.l.y = s.p_1.y - 1;
 	while (++s.l.y <= s.p_2.y)
 	{

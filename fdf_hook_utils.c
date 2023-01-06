@@ -14,49 +14,62 @@
 
 void	adjust_z(t_fdf_data_set *s, char dir)
 {
+	int	mod;
+
+	mod = s->d.win_width / 100;
 	if (dir == 'i')
 	{
-		s->d.z_offset -= s->d.win_width / 100;
+		s->d.z_offset -= mod;
 	}
 	else if (dir == 'd')
 	{
-		s->d.z_offset += s->d.win_width / 100;
+		s->d.z_offset += mod;
 	}
 	update_image(*s);
 }
 
 void	zoom(t_fdf_data_set *s, char dir)
 {
+	int	mod;
+
+	mod = s->d.win_width / 100;
 	if (dir == '+')
 	{
-		s->p.x_of += s->d.win_width / 100;
-		s->p.y_of += s->d.win_width / 100;
+		s->p.x_of += mod;
+		s->p.y_of += mod;
 	}
 	else if (dir == '-')
 	{
-		s->p.x_of -= s->d.win_width / 100;
-		s->p.y_of -= s->d.win_width / 100;
+		s->p.x_of -= mod;
+		if (s->p.x_of < 2)
+			s->p.x_of = 1;
+		s->p.y_of -= mod;
+		if (s->p.y_of < 2)
+			s->p.y_of = 1;
 	}
 	update_image(*s);
 }
 
 void	translate(t_fdf_data_set *s, char dir)
 {
+	int	mod;
+
+	mod = s->d.win_width / 10;
 	if (dir == 'u')
 	{
-		s->p.y_t -= s->d.win_width / 10;
+		s->p.y_t -= mod;
 	}
 	else if (dir == 'd')
 	{
-		s->p.y_t += s->d.win_width / 10;
+		s->p.y_t += mod;
 	}
 	else if (dir == 'r')
 	{
-		s->p.x_t += s->d.win_width / 10;
+		s->p.x_t += mod;
 	}
 	else if (dir == 'l')
 	{
-		s->p.x_t -= s->d.win_width / 10;
+		s->p.x_t -= mod;
 	}
 	update_image(*s);
 }
