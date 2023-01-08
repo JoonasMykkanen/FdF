@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 
-// Adding Z offset for Y coordinates
 void	add_height(t_fdf_data_set *s)
 {
 	s->p.z = 0;
@@ -26,7 +25,6 @@ void	add_height(t_fdf_data_set *s)
 	}
 }
 
-// modify values during loop in graphic_engine()
 void	mod_p(t_pixel *p, int mode)
 {
 	if (mode == 0)
@@ -46,7 +44,6 @@ void	flip(int *one, int *two)
 	*one = temp;
 }
 
-// Starting values for pixel p. "p" is used in main loop in graphic_engine()
 static void	init_p(t_fdf_data_set *s)
 {
 	char	**count;
@@ -66,8 +63,6 @@ static void	init_p(t_fdf_data_set *s)
 	s->p.y = -1;
 }
 
-// Starting values for our draw functions, this will get called 
-// every time a new point in arr is reached
 void	init_graphics(t_fdf_data_set *s)
 {
 	init_p(s);

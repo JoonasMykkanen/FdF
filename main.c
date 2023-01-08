@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	if (s.d.arr)
 	{
 		s.d.ptr = mlx_init();
-		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "42");
+		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "");
 		graphic_engine(s);
 	}
 	ft_cleanup(s);

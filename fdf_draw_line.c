@@ -39,7 +39,7 @@ static void	rise_over_run(t_fdf_data_set s)
 		s.l.y = s.p_2.y;
 	}
 	s.l.x = s.p_1.x;
-	while (s.l.x <= s.p_2.x)
+	while (s.l.x < s.p_2.x)
 	{
 		draw_pixel(&s, s.l.x, s.l.y);
 		s.l.offset += s.l.delta;
@@ -65,7 +65,7 @@ static void	run_over_rise(t_fdf_data_set s)
 		flip(&s.p_2.y, &s.p_1.y);
 		s.l.x = s.p_2.x;
 	}
-	while (s.l.y <= s.p_2.y)
+	while (s.l.y < s.p_2.y)
 	{
 		draw_pixel(&s, s.l.x, s.l.y);
 		s.l.offset += s.l.delta;
