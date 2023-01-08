@@ -74,6 +74,8 @@ int	main(int argc, char **argv)
 		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "");
 		graphic_engine(s);
 	}
+	else
+		ft_printf("Map error... Exit! /n");
 	ft_cleanup(s);
 	return (0);
 }
