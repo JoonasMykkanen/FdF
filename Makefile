@@ -46,11 +46,3 @@ fclean:
 	rm -f FdF
 
 re: fclean all
-
-test:
-	cd libft && $(MAKE)
-	mv libft/libft.a libft.a
-	cd minilibx_macos && $(MAKE)
-	mv minilibx_macos/libmlx.a libmlx.a
-	cc -g -o $(NAME) $(INCLUDES) $(SRC) $(LIBS) $(FRAME)
-	./FdF "test_maps/42.fdf"
