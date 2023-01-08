@@ -28,4 +28,5 @@ void	ft_free(char **garbage)
 void	ft_cleanup(t_fdf_data_set s)
 {
 	ft_free(s.d.arr);
+	ft_printf("Exit!\n");
 }
