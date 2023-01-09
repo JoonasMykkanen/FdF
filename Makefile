@@ -15,8 +15,6 @@ NAME = FdF
 SRC = main.c fdf_utils.c fdf_draw.c fdf_draw_utils.c fdf_draw_line.c fdf_image.c\
 fdf_hook.c fdf_hook_utils.c fdf_color.c fdf_free.c
 
-SRC_O = $(SRC:.c=.o)
-
 INCLUDES = -I fdf.h
 
 LIBS = -L. -lft -lmlx
@@ -29,10 +27,12 @@ all: $(NAME)
 
 $(NAME):
 	cd libft && $(MAKE)
-	mv libft/libft.a libft.a
+	cp libft/libft.a libft.a
+	rm -f libft/libft.a
 	cd minilibx_macos && $(MAKE)
-	mv minilibx_macos/libmlx.a libmlx.a
-	cc -o $(NAME) $(SRC) $(FLAGS) $(LIBS) $(FRAME) 
+	cp minilibx_macos/libmlx.a libmlx.a
+	rm -f minilibx_macos/libmlx.a
+	cc -o $(NAME) $(SRC) $(FLAGS) $(LIBS) $(FRAME)
 	
 clean:
 	cd libft && $(MAKE) clean
@@ -46,3 +46,7 @@ fclean:
 	rm -f FdF
 
 re: fclean all
+
+test: fclean all
+	./fdf test_maps/42.fdf
+	$(MAKE) fclean
