@@ -80,6 +80,10 @@ static void	blue_gradient(t_fdf_data_set *s)
 
 void	get_pixel_color(t_fdf_data_set *s)
 {
+	if (s->p_2.y - s->p_1.y == 0)
+	{
+		s->p_2.y++;
+	}
 	if (s->d.z_offset_og - s->d.z_offset + s->d.z_max == 0)
 	{
 		s->p.color = 0xffffff;

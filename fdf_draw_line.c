@@ -22,7 +22,20 @@ static void	vertical_line(t_fdf_data_set s)
 	s.l.y = s.p_1.y - 1;
 	while (++s.l.y <= s.p_2.y)
 	{
-		s.p.z++;
+		draw_pixel(&s, s.l.x, s.l.y);
+	}
+}
+
+static void	horizontal_line(t_fdf_data_set s)
+{
+	s.l.y = s.p_1.y;
+	if (s.p_2.x < s.p_1.x)
+	{
+		flip(&s.p_2.x, &s.p_1.x);
+	}
+	s.l.x = s.p_1.x - 1;
+	while (++s.l.x <= s.p_2.x)
+	{
 		draw_pixel(&s, s.l.x, s.l.y);
 	}
 }
@@ -87,7 +100,7 @@ void	draw_line(t_fdf_data_set s)
 	if (s.l.run == 0)
 		vertical_line(s);
 	if (s.l.rise == 0)
-			return ;
+		horizontal_line(s);
 	else
 	{
 		s.l.m = (float)s.l.rise / s.l.run;
