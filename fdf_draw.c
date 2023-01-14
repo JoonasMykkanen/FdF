@@ -19,25 +19,25 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 
 	if (s->p.c < s->p.x_max - 1)
 	{
-		x_values = ft_split(s->d.arr[s->p.y], ' ');
 		if (dir == 'r')
 		{
+			x_values = ft_split(s->d.arr[s->p.y], ' ');
 			s->p_1.z = ft_atoi(x_values[s->p.c]);
 			s->p_2.z = ft_atoi(x_values[s->p.c + 1]);
+			ft_free(x_values);
 		}
-		ft_free(x_values);
 	}
 	if (s->p.y < s->p.y_max - 1)
 	{
-		y_values = ft_split(s->d.arr[s->p.y], ' ');
 		if (dir == 'd')
 		{
+			y_values = ft_split(s->d.arr[s->p.y], ' ');
 			s->p_1.z = ft_atoi(y_values[s->p.c]);
 			ft_free(y_values);
 			y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
 			s->p_2.z = ft_atoi(y_values[s->p.c]);
+			ft_free(y_values);
 		}
-		ft_free(y_values);
 	}
 }
 

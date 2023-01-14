@@ -48,5 +48,5 @@ fclean:
 re: fclean all
 
 test: fclean all
-	./fdf test_maps/42.fdf
+	./fdf test_maps/t2.fdf
 	$(MAKE) fclean
