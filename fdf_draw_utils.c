@@ -58,9 +58,9 @@ static void	init_p(t_fdf_data_set *s)
 	s->d.z_offset_og = s->d.z_max;
 	s->p.x_t = 600;
 	s->p.y_t = 100;
-	s->p.c = 0;
-	s->p.x = -1;
 	s->p.y = -1;
+	s->p.x = -1;
+	s->p.c = 0;
 }
 
 void	init_graphics(t_fdf_data_set *s)

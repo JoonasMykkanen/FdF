@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 
-// Converts R G B values to one hex int value
 static int	convert_rgb(int r, int g, int b)
 {
 	int	hex;
@@ -79,9 +78,6 @@ static void	blue_gradient(t_fdf_data_set *s)
 		s->p.color = 0xffffff;
 }
 
-// With blue and red gradient functions we are using normalized
-// values for each pixel z value between 0-255
-// 
 void	get_pixel_color(t_fdf_data_set *s)
 {
 	if (s->d.z_offset_og - s->d.z_offset + s->d.z_max == 0)

@@ -86,6 +86,8 @@ void	draw_line(t_fdf_data_set s)
 	s.l.run = s.p_2.x - s.p_1.x;
 	if (s.l.run == 0)
 		vertical_line(s);
+	if (s.l.rise == 0)
+			return ;
 	else
 	{
 		s.l.m = (float)s.l.rise / s.l.run;

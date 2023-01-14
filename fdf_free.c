@@ -16,6 +16,8 @@ void	ft_free(char **garbage)
 {
 	int	len;
 
+	if (!garbage || garbage == NULL)
+		return ;
 	len = count_columns(garbage);
 	while (len >= 0)
 	{
