@@ -77,5 +77,5 @@ int	main(int argc, char **argv)
 	else
 		ft_printf("Map error... Exit! /n");
 	ft_cleanup(s);
-	return (0);  
+	return (0);
 }
