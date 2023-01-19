@@ -45,7 +45,9 @@ fclean:
 	cd minilibx_macos && $(MAKE) clean
 	rm -f FdF
 
-re: fclean all
+re:
+	$(MAKE) all
+	$(MAKE) fclean
 
 test: fclean all
 	./fdf test_maps/t2.fdf
