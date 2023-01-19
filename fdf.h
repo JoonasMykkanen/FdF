@@ -83,12 +83,12 @@ typedef struct s_image
 
 typedef struct s_fdf
 {
-	t_data			d;
+	t_line_args		l;
 	t_point_1		p_1;
 	t_point_2		p_2;
-	t_line_args		l;
 	t_pixel			p;
 	t_image			i;
+	t_data			d;
 }				t_fdf_data_set;
 
 int		ft_close(void);

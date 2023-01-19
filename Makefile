@@ -32,7 +32,7 @@ $(NAME):
 	cd minilibx_macos && $(MAKE)
 	cp minilibx_macos/libmlx.a libmlx.a
 	rm -f minilibx_macos/libmlx.a
-	cc -o $(NAME) $(SRC) $(FLAGS) $(LIBS) $(FRAME)
+	cc -g -o $(NAME) $(SRC) $(FLAGS) $(LIBS) $(FRAME)
 	
 clean:
 	cd libft && $(MAKE) clean
