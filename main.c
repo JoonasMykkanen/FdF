@@ -40,6 +40,11 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 	count = line_count(argv);
 	s->d.arr = malloc(sizeof(char *) * (count + 1));
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		s->d.map_status = -1;
+		return ;
+	}
 	while (i < count)
 	{
 		line = get_next_line(fd);
@@ -50,6 +55,7 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 		i++;
 	}
 	s->d.arr[i] = NULL;
+	s->d.map_status = 1;
 	close(fd);
 }
 
@@ -66,14 +72,14 @@ int	main(int argc, char **argv)
 	s.d.win_height = 900;
 	welcome_message();
 	build_arr(&s, argv);
-	if (s.d.arr)
+	if (s.d.map_status == 1)
 	{
 		s.d.ptr = mlx_init();
 		s.d.win = mlx_new_window(s.d.ptr, s.d.win_width, s.d.win_height, "");
 		graphic_engine(s);
+		ft_cleanup(s);
 	}
 	else
-		ft_printf("Map error... Exit! /n");
-	ft_cleanup(s);
+		ft_printf("Map error... Exit! \n");
 	return (0);
 }

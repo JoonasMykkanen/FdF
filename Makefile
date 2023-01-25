@@ -46,8 +46,8 @@ fclean:
 	rm -f FdF
 
 re:
-	$(MAKE) all
 	$(MAKE) fclean
+	$(MAKE) all
 
 test: fclean all
 	./fdf test_maps/t2.fdf

@@ -34,7 +34,6 @@ void	mod_p(t_pixel *p, int mode)
 	}
 }
 
-// Flip two integers
 void	flip(int *one, int *two)
 {
 	int	temp;

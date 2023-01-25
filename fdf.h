@@ -27,6 +27,7 @@ typedef struct s_data
 	void	*img_blk;
 	int		z_offset;
 	int		win_width;
+	int		map_status;
 	int		win_height;
 	int		z_offset_og;
 }				t_data;
