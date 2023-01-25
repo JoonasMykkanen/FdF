@@ -35,7 +35,9 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 			s->p_1.z = ft_atoi(y_values[s->p.c]);
 			ft_free(y_values);
 			y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
+			// ft_printf("x: %d, y: %d: ,height: %s \n",s->p.c, s->p.y, y_values[s->p.c]);
 			s->p_2.z = ft_atoi(y_values[s->p.c]);
+			// ft_printf("Dont get here \n");
 			ft_free(y_values);
 		}
 	}
@@ -47,7 +49,6 @@ void	draw(t_fdf_data_set s)
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
 	if (s.p.c < s.p.x_max - 1)
 	{
-		get_next_points(&s, 'r');
 		s.p_2.x = ((s.p.c + 1) * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 		s.p_2.y = ((((s.p.c + 1) * s.p.x_of) + (s.p.y * s.p.y_of)) / 2);
 		s.p_2.y += s.p.y_t;

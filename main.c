@@ -48,13 +48,20 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 	while (i < count)
 	{
 		line = get_next_line(fd);
-		len = ft_strlen(line);
-		s->d.arr[i] = malloc(sizeof(char) * len + 1);
-		ft_memcpy(s->d.arr[i], line, len);
+		if (line == NULL)
+		{
+			s->d.arr[i] = NULL;
+		}
+		else
+		{
+			len = ft_strlen(line);
+			s->d.arr[i] = malloc(sizeof(char) * len + 1);
+			ft_memcpy(s->d.arr[i], line, len + 1);
+		}
 		free(line);
 		i++;
 	}
-	s->d.arr[i] = NULL;
+	
 	s->d.map_status = 1;
 	close(fd);
 }
