@@ -28,7 +28,6 @@ static void	welcome_message(void)
 	ft_printf("decrease z: 1\n");
 }
 
-// Builds main dataset from our input file
 static void	build_arr(t_fdf_data_set *s, char **argv)
 {
 	int		i;
@@ -54,7 +53,6 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 	close(fd);
 }
 
-// This is main loop, obviously... Why did you ask?
 int	main(int argc, char **argv)
 {
 	t_fdf_data_set	s;
