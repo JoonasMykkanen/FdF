@@ -37,7 +37,6 @@ void	update_image(t_fdf_data_set s)
 	mlx_put_image_to_window(s.d.ptr, s.d.win, s.d.img, 0, 0);
 }
 
-// Will create ALL BLACK image
 void	blk_image(t_fdf_data_set *s, void *image, int *data)
 {
 	int	x;
@@ -60,7 +59,6 @@ void	blk_image(t_fdf_data_set *s, void *image, int *data)
 	}
 }
 
-// Will draw pixel to actual window coordinates based on x, y input
 void	draw_pixel(t_fdf_data_set *s, int x, int y)
 {
 	int	end;

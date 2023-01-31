@@ -47,6 +47,7 @@ void	draw(t_fdf_data_set s)
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
 	if (s.p.c < s.p.x_max - 1)
 	{
+		get_next_points(&s, 'r');
 		s.p_2.x = ((s.p.c + 1) * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 		s.p_2.y = ((((s.p.c + 1) * s.p.x_of) + (s.p.y * s.p.y_of)) / 2);
 		s.p_2.y += s.p.y_t;

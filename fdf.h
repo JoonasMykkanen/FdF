@@ -22,8 +22,10 @@ typedef struct s_data
 	void	*ptr;
 	void	*win;
 	void	*img;
+	int		map_i;
 	char	**arr;
 	int		z_max;
+	int		map_len;
 	void	*img_blk;
 	int		z_offset;
 	int		win_width;

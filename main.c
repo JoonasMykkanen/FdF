@@ -28,31 +28,43 @@ static void	welcome_message(void)
 	ft_printf("decrease z: 1\n");
 }
 
+static void	build_line(t_fdf_data_set *s, char *line)
+{
+	if (!line || line == NULL)
+	{
+		s->d.arr[s->d.map_i] = NULL;
+	}
+	else
+	{
+		s->d.arr[s->d.map_i] = malloc(sizeof(char) * s->d.map_len + 1);
+		ft_memcpy(s->d.arr[s->d.map_i], line, s->d.map_len + 1);
+	}
+	s->d.map_i++;
+}
+
 static void	build_arr(t_fdf_data_set *s, char **argv)
 {
 	int		fd;
+	int		count;
 	char	*line;
 
-	s->d.map_i = -1;
-	s->d.arr = malloc(sizeof(char *) * (line_count(argv) + 1));
+	s->d.map_i = 0;
+	count = line_count(argv);
+	s->d.arr = malloc(sizeof(char *) * (count + 1));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		s->d.map_status = -1;
 		return ;
 	}
-	while (++s->d.map_i < line_count(argv))
+	while (s->d.map_i < count)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
-			s->d.arr[s->d.map_i] = NULL;
-		else
-		{
-			s->d.arr[s->d.map_i] = malloc(sizeof(char) * ft_strlen(line) + 1);
-			ft_memcpy(s->d.arr[s->d.map_i], line, ft_strlen(line) + 1);
-		}
+		s->d.map_len = ft_strlen(line);
+		build_line(s, line);
 		free(line);
 	}
+	s->d.arr[s->d.map_i] = NULL;
 	s->d.map_status = 1;
 	close(fd);
 }
