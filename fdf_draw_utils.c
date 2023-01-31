@@ -52,7 +52,7 @@ static void	init_p(t_fdf_data_set *s)
 	ft_free(count);
 	s->p.y_max = count_rows(s->d.arr);
 	s->p.y_of = (s->d.win_height * 0.5) / s->p.y_max;
-	s->p.x_of = (s->d.win_height * 0.5) / s->p.x_max;
+	s->p.x_of = (s->d.win_height * 0.5) / s->p.y_max;
 	s->d.z_offset = s->p.y_of * -1;
 	s->d.z_offset_og = s->d.z_max;
 	s->p.x_t = 750;

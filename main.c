@@ -80,8 +80,8 @@ int	main(int argc, char **argv)
 	}
 	s.d.win_width = 1500;
 	s.d.win_height = 900;
-	welcome_message();
 	build_arr(&s, argv);
+	welcome_message();
 	if (s.d.map_status == 1)
 	{
 		s.d.ptr = mlx_init();

@@ -32,7 +32,7 @@ void	zoom(t_fdf_data_set *s, char dir)
 {
 	int	mod;
 
-	mod = s->d.win_width / 100;
+	mod = s->d.win_width / 500;
 	if (dir == '+')
 	{
 		s->p.x_of += mod;
