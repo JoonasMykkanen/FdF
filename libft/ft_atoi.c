@@ -30,8 +30,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sum = 0;
 	neg = 1;
-	if (!str || str == NULL)
-		return (0);
 	while (((str[i] < 14 && str[i] > 8) || str[i] == ' '))
 		i++;
 	if (str[i] == '-')

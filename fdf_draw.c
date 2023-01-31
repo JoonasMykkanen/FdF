@@ -17,9 +17,9 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 	char	**x_values;
 	char	**y_values;
 
-	if (s->p.c < s->p.x_max - 1)
+	if (dir == 'r')
 	{
-		if (dir == 'r')
+		if (s->p.c < s->p.x_max - 1)
 		{
 			x_values = ft_split(s->d.arr[s->p.y], ' ');
 			s->p_1.z = ft_atoi(x_values[s->p.c]);
@@ -27,9 +27,9 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 			ft_free(x_values);
 		}
 	}
-	if (s->p.y < s->p.y_max - 1)
+	if (dir == 'd')
 	{
-		if (dir == 'd')
+		if (s->p.y < s->p.y_max - 1)
 		{
 			y_values = ft_split(s->d.arr[s->p.y], ' ');
 			s->p_1.z = ft_atoi(y_values[s->p.c]);
