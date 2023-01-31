@@ -35,9 +35,7 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 			s->p_1.z = ft_atoi(y_values[s->p.c]);
 			ft_free(y_values);
 			y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
-			// ft_printf("x: %d, y: %d: ,height: %s \n",s->p.c, s->p.y, y_values[s->p.c]);
 			s->p_2.z = ft_atoi(y_values[s->p.c]);
-			// ft_printf("Dont get here \n");
 			ft_free(y_values);
 		}
 	}
