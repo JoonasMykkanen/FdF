@@ -49,14 +49,14 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 	char	*line;
 
 	s->d.map_i = 0;
-	count = line_count(argv);
-	s->d.arr = malloc(sizeof(char *) * (count + 1));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		s->d.map_status = -1;
 		return ;
 	}
+	count = line_count(argv);
+	s->d.arr = malloc(sizeof(char *) * (count + 1));
 	while (s->d.map_i < count)
 	{
 		line = get_next_line(fd);
