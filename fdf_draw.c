@@ -41,7 +41,6 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 
 void	draw(t_fdf_data_set s)
 {
-	ft_printf("X_MAX: %d Y_MAX: %d \n", s.p.x_max, s.p.y_max);
 	s.p_1.x = (s.p.c * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
 	if (s.p.c < s.p.x_max - 1)

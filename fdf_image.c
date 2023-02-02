@@ -19,7 +19,7 @@ void	update_image(t_fdf_data_set s)
 	s.p.c = 0;
 	s.p.y = -1;
 	s.p.x = -1;
-	while (++s.p.y < s.p.y_max)
+	while (++s.p.y <= s.p.y_max)
 	{
 		while (s.p.c < s.p.x_max)
 		{

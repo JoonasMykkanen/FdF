@@ -84,11 +84,11 @@ void	get_pixel_color(t_fdf_data_set *s)
 	{
 		s->p_2.y++;
 	}
-	if (s->d.z_offset_og - s->d.z_offset + s->d.z_max == 0)
+	if (s->d.z_offset == 0)
 	{
 		s->p.color = 0xffffff;
 	}
-	else if (s->d.z_offset > s->d.z_offset_og)
+	else if (s->d.z_offset > 0)
 	{
 		blue_gradient(s);
 	}

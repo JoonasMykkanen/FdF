@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argc > 2)
 	{
-		ft_printf("No map specified... Always assume user is an idiot!\n");
+		ft_printf("wrong input... Exit!\n");
 		return (0);
 	}
 	s.d.win_width = 1500;
