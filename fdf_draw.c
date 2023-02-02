@@ -19,21 +19,19 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 
 	if (dir == 'r')
 	{
-		if (s->p.c < s->p.x_max)
-		{
-			x_values = ft_split(s->d.arr[s->p.y], ' ');
-			s->p_1.z = ft_atoi(x_values[s->p.c]);
+		x_values = ft_split(s->d.arr[s->p.y], ' ');
+		s->p_1.z = ft_atoi(x_values[s->p.c]);
+		if (s->p.c < s->p.x_max - 1)
 			s->p_2.z = ft_atoi(x_values[s->p.c + 1]);
-			ft_free(x_values);
-		}
+		ft_free(x_values);
 	}
 	if (dir == 'd')
 	{
+		y_values = ft_split(s->d.arr[s->p.y], ' ');
+		s->p_1.z = ft_atoi(y_values[s->p.c]);
+		ft_free(y_values);
 		if (s->p.y < s->p.y_max)
 		{
-			y_values = ft_split(s->d.arr[s->p.y], ' ');
-			s->p_1.z = ft_atoi(y_values[s->p.c]);
-			ft_free(y_values);
 			y_values = ft_split(s->d.arr[s->p.y + 1], ' ');
 			s->p_2.z = ft_atoi(y_values[s->p.c]);
 			ft_free(y_values);
@@ -43,6 +41,7 @@ static void	get_next_points(t_fdf_data_set *s, char dir)
 
 void	draw(t_fdf_data_set s)
 {
+	ft_printf("X_MAX: %d Y_MAX: %d \n", s.p.x_max, s.p.y_max);
 	s.p_1.x = (s.p.c * s.p.x_of) - (s.p.y * s.p.y_of) + s.p.x_t;
 	s.p_1.y = (((s.p.c * s.p.x_of) + (s.p.y * s.p.y_of)) / 2) + s.p.y_t;
 	if (s.p.c < s.p.x_max - 1)
@@ -53,7 +52,7 @@ void	draw(t_fdf_data_set s)
 		s.p_2.y += s.p.y_t;
 		draw_line(s);
 	}
-	if (s.p.y < s.p.y_max - 1)
+	if (s.p.y < s.p.y_max)
 	{
 		get_next_points(&s, 'd');
 		s.p_2.x = (s.p.c * s.p.x_of) - ((s.p.y + 1) * s.p.y_of) + s.p.x_t;
@@ -66,7 +65,7 @@ void	draw(t_fdf_data_set s)
 void	graphic_engine(t_fdf_data_set s)
 {	
 	init_graphics(&s);
-	while (++s.p.y < s.p.y_max)
+	while (++s.p.y <= s.p.y_max)
 	{
 		while (s.p.c < s.p.x_max)
 		{
