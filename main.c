@@ -69,6 +69,23 @@ static void	build_arr(t_fdf_data_set *s, char **argv)
 	close(fd);
 }
 
+static void	dir_check(char *file)
+{
+	char	b[1];
+	int		fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		exit (-1);
+	if (read(fd, b, 1) == -1)
+	{
+		close(fd);
+		perror("dir_check");
+		exit (-1);
+	}
+	close(fd);
+}
+
 int	main(int argc, char **argv)
 {
 	t_fdf_data_set	s;
@@ -78,6 +95,7 @@ int	main(int argc, char **argv)
 		ft_printf("wrong input... Exit!\n");
 		return (0);
 	}
+	dir_check(argv[1]);
 	s.d.win_width = 1500;
 	s.d.win_height = 900;
 	build_arr(&s, argv);

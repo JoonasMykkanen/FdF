@@ -57,7 +57,7 @@ static void	init_p(t_fdf_data_set *s)
 		s->p.y_of = 2;
 	if (s->p.x_of < 2)
 		s->p.x_of = 2;
-	s->d.z_offset = s->p.y_of * -1;
+	s->d.z_offset = (s->p.y_of * -1) / 3;
 	s->d.z_offset_og = s->d.z_max;
 	s->p.x_t = 650;
 	s->p.y_t = 250;
